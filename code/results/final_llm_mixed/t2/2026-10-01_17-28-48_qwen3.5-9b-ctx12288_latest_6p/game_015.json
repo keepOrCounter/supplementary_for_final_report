@@ -1,0 +1,1328 @@
+{
+    "game_index": 15,
+    "seed": 912017,
+    "crashed": false,
+    "crash_reason": "",
+    "duration_seconds": 546.8373041152954,
+    "num_players": 6,
+    "spies": [
+        4,
+        5
+    ],
+    "agents": {
+        "0": "RandomResistanceAgent",
+        "1": "RandomResistanceAgent",
+        "2": "AblationResistanceAgent(eu/eu/eu,belief=llm)",
+        "3": "AblationResistanceAgent(llm/llm/llm)",
+        "4": "AblationResistanceAgent(eu/eu/eu,belief=strategic)",
+        "5": "AblationResistanceAgent(eu/eu/eu,belief=strategic)"
+    },
+    "winner": "spies",
+    "win_reason": "3 missions failed",
+    "mission_successes": [
+        false,
+        false,
+        false
+    ],
+    "missions": [
+        {
+            "mission_index": 0,
+            "proposed_by": 4,
+            "mission_team": [
+                2,
+                5
+            ],
+            "votes_on_team": {
+                "0": true,
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "5": true
+            },
+            "rejected_proposals": [],
+            "mission_succeeded": false,
+            "fail_cards": null
+        },
+        {
+            "mission_index": 1,
+            "proposed_by": 5,
+            "mission_team": [
+                2,
+                4,
+                5
+            ],
+            "votes_on_team": {
+                "0": true,
+                "1": true,
+                "2": false,
+                "3": true,
+                "4": true,
+                "5": true
+            },
+            "rejected_proposals": [],
+            "mission_succeeded": false,
+            "fail_cards": null
+        },
+        {
+            "mission_index": 2,
+            "proposed_by": 1,
+            "mission_team": [
+                0,
+                1,
+                2,
+                5
+            ],
+            "votes_on_team": {
+                "0": true,
+                "1": false,
+                "2": true,
+                "3": false,
+                "4": true,
+                "5": true
+            },
+            "rejected_proposals": [
+                {
+                    "proposed_by": 0,
+                    "proposed_team": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ],
+                    "votes_on_team": {
+                        "0": true,
+                        "1": false,
+                        "2": true,
+                        "3": false,
+                        "4": false,
+                        "5": false
+                    }
+                }
+            ],
+            "mission_succeeded": false,
+            "fail_cards": null
+        }
+    ],
+    "rejected_after_last_mission": [],
+    "beliefs": [
+        {
+            "player_id": 2,
+            "missions_seen": 0,
+            "spy_probability": {
+                "0": 0.38337182448036955,
+                "1": 0.38337182448036955,
+                "2": 0.0,
+                "3": 0.38337182448036955,
+                "4": 0.4665127020785219,
+                "5": 0.38337182448036955
+            }
+        },
+        {
+            "player_id": 3,
+            "missions_seen": 0,
+            "spy_probability": {
+                "0": 0.0,
+                "1": 0.0,
+                "2": 0.0,
+                "3": 0.0,
+                "4": 0.0,
+                "5": 0.0
+            }
+        },
+        {
+            "player_id": 2,
+            "missions_seen": 1,
+            "spy_probability": {
+                "0": 0.27465445259616555,
+                "1": 0.27465445259616555,
+                "2": 0.0,
+                "3": 0.27465445259616555,
+                "4": 0.17603664221150334,
+                "5": 1.0
+            }
+        },
+        {
+            "player_id": 3,
+            "missions_seen": 1,
+            "spy_probability": {
+                "0": 0.0,
+                "1": 0.0,
+                "2": 0.0,
+                "3": 0.0,
+                "4": 1.0,
+                "5": 1.0
+            }
+        },
+        {
+            "player_id": 2,
+            "missions_seen": 2,
+            "spy_probability": {
+                "0": 0.1599602101611615,
+                "1": 0.18662024518802175,
+                "2": 0.0,
+                "3": 0.18662024518802175,
+                "4": 0.46679929946279497,
+                "5": 1.0
+            }
+        },
+        {
+            "player_id": 3,
+            "missions_seen": 2,
+            "spy_probability": {
+                "0": 0.0,
+                "1": 0.0,
+                "2": 1.0,
+                "3": 0.0,
+                "4": 0.0,
+                "5": 1.0
+            }
+        },
+        {
+            "player_id": 2,
+            "missions_seen": 3,
+            "spy_probability": {
+                "0": 0.24696628822079264,
+                "1": 0.04398827153831625,
+                "2": 0.0,
+                "3": 0.04555815425641616,
+                "4": 0.6634872859844749,
+                "5": 1.0
+            }
+        },
+        {
+            "player_id": 3,
+            "missions_seen": 3,
+            "spy_probability": {
+                "0": 0.0,
+                "1": 0.0,
+                "2": 1.0,
+                "3": 0.0,
+                "4": 0.0,
+                "5": 1.0
+            }
+        }
+    ],
+    "identity_accuracy": 0.8,
+    "identity_missions_seen": 3,
+    "actions": [
+        {
+            "player_id": 4,
+            "phase": "propose",
+            "action": {
+                "type": "propose_team",
+                "team": [
+                    2,
+                    5
+                ]
+            }
+        },
+        {
+            "player_id": 4,
+            "phase": "propose",
+            "action": {
+                "type": "call_vote"
+            }
+        },
+        {
+            "player_id": 0,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 1,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 2,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 3,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 4,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 5,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 2,
+            "phase": "mission_vote",
+            "action": {
+                "type": "mission_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 5,
+            "phase": "mission_vote",
+            "action": {
+                "type": "mission_vote",
+                "vote": false
+            }
+        },
+        {
+            "player_id": 5,
+            "phase": "propose",
+            "action": {
+                "type": "propose_team",
+                "team": [
+                    2,
+                    4,
+                    5
+                ]
+            }
+        },
+        {
+            "player_id": 5,
+            "phase": "propose",
+            "action": {
+                "type": "call_vote"
+            }
+        },
+        {
+            "player_id": 0,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 1,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 2,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": false
+            }
+        },
+        {
+            "player_id": 3,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 4,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 5,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 2,
+            "phase": "mission_vote",
+            "action": {
+                "type": "mission_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 4,
+            "phase": "mission_vote",
+            "action": {
+                "type": "mission_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 5,
+            "phase": "mission_vote",
+            "action": {
+                "type": "mission_vote",
+                "vote": false
+            }
+        },
+        {
+            "player_id": 0,
+            "phase": "propose",
+            "action": {
+                "type": "propose_team",
+                "team": [
+                    0,
+                    1,
+                    2,
+                    3
+                ]
+            }
+        },
+        {
+            "player_id": 0,
+            "phase": "propose",
+            "action": {
+                "type": "call_vote"
+            }
+        },
+        {
+            "player_id": 0,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 1,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": false
+            }
+        },
+        {
+            "player_id": 2,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 3,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": false
+            }
+        },
+        {
+            "player_id": 4,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": false
+            }
+        },
+        {
+            "player_id": 5,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": false
+            }
+        },
+        {
+            "player_id": 1,
+            "phase": "propose",
+            "action": {
+                "type": "propose_team",
+                "team": [
+                    0,
+                    1,
+                    2,
+                    5
+                ]
+            }
+        },
+        {
+            "player_id": 1,
+            "phase": "propose",
+            "action": {
+                "type": "call_vote"
+            }
+        },
+        {
+            "player_id": 0,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 1,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": false
+            }
+        },
+        {
+            "player_id": 2,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 3,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": false
+            }
+        },
+        {
+            "player_id": 4,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 5,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 0,
+            "phase": "mission_vote",
+            "action": {
+                "type": "mission_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 1,
+            "phase": "mission_vote",
+            "action": {
+                "type": "mission_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 2,
+            "phase": "mission_vote",
+            "action": {
+                "type": "mission_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 5,
+            "phase": "mission_vote",
+            "action": {
+                "type": "mission_vote",
+                "vote": false
+            }
+        }
+    ],
+    "llm_stats": {
+        "per_agent": {
+            "2": {
+                "total_calls": 118,
+                "retry_count": 0,
+                "total_prompt_tokens": 152077,
+                "total_completion_tokens": 15979,
+                "total_tokens": 168056,
+                "token_tracking_complete": true
+            },
+            "3": {
+                "total_calls": 10,
+                "retry_count": 0,
+                "total_prompt_tokens": 12983,
+                "total_completion_tokens": 1895,
+                "total_tokens": 14878,
+                "token_tracking_complete": true
+            }
+        },
+        "game_total": {
+            "total_calls": 128,
+            "retry_count": 0,
+            "total_prompt_tokens": 165060,
+            "total_completion_tokens": 17874,
+            "total_tokens": 182934,
+            "token_tracking_complete": true
+        }
+    },
+    "likelihood_stats": {
+        "per_agent": {
+            "2": {
+                "queries": 2641,
+                "judge_calls": 59,
+                "cache_hits": 2582
+            }
+        },
+        "game_total": {
+            "queries": 2641,
+            "judge_calls": 59,
+            "cache_hits": 2582
+        }
+    },
+    "reasoning": {
+        "2": {
+            "judge_log": [
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 0 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 2 players. 1 or more Fail cards make the mission fail.\n- Options: WITHOUT_ME_0SUSPECT_2UNSURE_0TRUSTED, WITH_ME_0SUSPECT_1UNSURE_0TRUSTED\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This resistance player wants to maximize the chance of mission success by avoiding spies. Since spies are likely among the UNSURE players, a team with fewer UNSURE players is safer. The WITH_ME option includes only 1 UNSURE player, while the WITHOUT_ME option includes 2 UNSURE players, making the latter riskier. Being on the team (WITH_ME) might also help the resistance by ensuring the player's own vote counts toward approval, but the primary factor here is the composition of the team regarding spy probability.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "A team with only 1 UNSURE player is safer than a team with 2 UNSURE players, as UNSURE players have a higher probability of being spies. The WITH_ME option minimizes spy risk while ensuring the player's own vote is cast.",
+                        "WITHOUT_ME_0SUSPECT_2UNSURE_0TRUSTED": "UNLIKELY",
+                        "WITH_ME_0SUSPECT_1UNSURE_0TRUSTED": "LIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 0 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 2 players. 1 or more Fail cards make the mission fail.\n- Options: WITHOUT_ME_0_PARTNERS, WITHOUT_ME_1_PARTNERS, WITH_ME_0_PARTNERS, WITH_ME_1_PARTNERS\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "The spy wants to sabotage the mission while avoiding detection. A team with no spies (WITHOUT_ME_0_PARTNERS) is safe for the Resistance and will succeed, so the spy would not choose it. A team with one spy (WITH_ME_0_PARTNERS) gives the spy a chance to fail the mission without raising immediate suspicion. A team with two spies (WITH_ME_1_PARTNERS) guarantees mission failure but risks being caught if the other spy is also suspected. The spy must balance sabotage with staying hidden in the first round.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "A spy leading a team wants to fail the mission while staying hidden. A team with no spies (WITHOUT_ME_0_PARTNERS) will succeed, which is bad for the spy. A team with one spy (WITH_ME_0_PARTNERS) allows the spy to fail the mission while appearing as a normal player. A team with two spies (WITH_ME_1_PARTNERS) guarantees failure but is riskier for detection, especially early in the game.",
+                        "WITHOUT_ME_0_PARTNERS": "UNLIKELY",
+                        "WITHOUT_ME_1_PARTNERS": "UNLIKELY",
+                        "WITH_ME_0_PARTNERS": "LIKELY",
+                        "WITH_ME_1_PARTNERS": "NEUTRAL",
+                        "confidence": "MEDIUM"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 0 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 2 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team. Spies on the team other than this spy player: 0.\n- Options: SUCCESS, FAIL\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This spy player is the only spy on the team, so they have full control over the mission's outcome. Playing FAIL guarantees a mission failure, which directly advances the spies' win condition. Playing SUCCESS would help the Resistance, which is contrary to the spy's goals. Therefore, the spy should choose FAIL to win the game.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "As the only spy on the team, this player can single-handedly cause the mission to fail. A failure directly advances the spies' win condition (3 failures to win) and is the optimal move for a spy in this position.",
+                        "SUCCESS": "UNLIKELY",
+                        "FAIL": "LIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 0 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 2 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team. Spies on the team other than this spy player: 1.\n- Options: SUCCESS, FAIL\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This spy has an ally on the team, meaning the mission can fail even if this spy plays SUCCESS. Playing FAIL guarantees the mission fails and points suspicion at both spies, but the ally can cover this spy. Playing SUCCESS risks the mission succeeding if the ally also plays SUCCESS, which would be a major strategic error for the ally. The spy must weigh the immediate benefit of a failed mission against the risk of being identified as a traitor if the mission succeeds.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "With an ally on the team, this spy can safely play FAIL to ensure mission failure without being the sole cause, minimizing suspicion. Playing SUCCESS risks the mission succeeding if the ally also plays SUCCESS, which is a strategic error for the spy's faction.",
+                        "SUCCESS": "UNLIKELY",
+                        "FAIL": "LIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 0 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 3 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team. Spies on the team other than this spy player: 0.\n- Options: SUCCESS, FAIL\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This spy is on a 3-player team with no other spies, meaning their card alone can determine the mission's outcome. Playing FAIL guarantees a mission failure, directly advancing the spy faction's win condition of 3 failures. However, playing FAIL also makes this spy the sole suspect for the failed mission, risking exposure and being banned from future teams. Playing SUCCESS hides the spy's identity but allows the Resistance to progress toward their win condition. The spy must weigh the immediate benefit of a failure against the long-term risk of being identified.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "The spy is alone on a 3-player team, so playing FAIL guarantees a mission failure, directly advancing the spy faction's win condition. While it risks exposure, the immediate benefit of securing a failure outweighs the risk of being identified on the first mission.",
+                        "SUCCESS": "UNLIKELY",
+                        "FAIL": "LIKELY",
+                        "confidence": "MEDIUM"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 0 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 3 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team. Spies on the team other than this spy player: 1.\n- Options: SUCCESS, FAIL\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This spy player is on a team of 3 with one other spy, giving them a chance to coordinate a mission failure. However, playing a FAIL card risks immediate suspicion if the mission fails, potentially leading to being voted off future teams. The spy must weigh the benefit of a failed mission against the risk of exposure, especially early in the game when the score is 0-0.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "With one other spy on the team, the spy can coordinate a fail without taking sole blame. A fail early in the game is strategically valuable to establish a foothold for the spies, and the presence of an ally mitigates the risk of immediate suspicion.",
+                        "SUCCESS": "UNLIKELY",
+                        "FAIL": "LIKELY",
+                        "confidence": "MEDIUM"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 0 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 4 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team. Spies on the team other than this spy player: 0.\n- Options: SUCCESS, FAIL\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This spy is on a team of 4 with no other spies, meaning this spy alone can determine the mission's outcome. A failed mission is the primary win condition for the spy faction, so playing FAIL directly advances their goal. However, playing FAIL also makes this spy a prime suspect for the Resistance, which conflicts with the goal of staying hidden. The early game score of 0-0 means there is no immediate pressure to save the mission to avoid a \"5 rejections\" loss. Therefore, the spy faces a trade-off between winning the game quickly and avoiding early detection.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "The spy is the only spy on the team, so playing FAIL guarantees a mission failure, directly advancing the spy win condition. While this risks suspicion, the early game state (0-0) offers no immediate pressure to avoid detection, making the win condition the priority.",
+                        "SUCCESS": "UNLIKELY",
+                        "FAIL": "LIKELY",
+                        "confidence": "MEDIUM"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 0 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 4 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team. Spies on the team other than this spy player: 1.\n- Options: SUCCESS, FAIL\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This spy player is on a 4-player team with one other spy, giving them a chance to coordinate a mission failure. However, playing a Fail card increases suspicion from the Resistance, who will likely target the team in future votes. The spy must balance the immediate goal of failing a mission against the long-term risk of being identified and blocked.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "With one other spy on the team, the spy can coordinate to fail the mission, which directly advances the Spy faction's win condition. Playing SUCCESS would help the Resistance win, which is contrary to the spy's goals.",
+                        "SUCCESS": "UNLIKELY",
+                        "FAIL": "LIKELY",
+                        "confidence": "MEDIUM"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 0 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 2 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team: no. Spies on the team other than this spy player: 0.\n- This spy player proposed this team: no.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This spy player is not on the team and there are no other spies on the team, so the mission will likely succeed unless another spy sabotages it. Since the team has no spies, voting REJECT is a clear attempt to sabotage the Resistance without contributing to a mission failure. Voting APPROVE allows the mission to proceed, which is generally favorable for the Resistance unless the spy wants to waste a rejection to trigger the \"5 rejections\" win condition later. Given the early game state and the lack of immediate sabotage opportunity, the spy would likely prefer to let the mission happen or save rejections for a later, more critical moment.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "The spy is not on the team and no other spies are present, so the mission will likely succeed. Voting REJECT sabotages the Resistance's progress without risking a failed mission. While early rejections are less critical, they are a safe way to deny the Resistance a success and potentially build toward the 5-rejection win condition.",
+                        "APPROVE": "NEUTRAL",
+                        "REJECT": "LIKELY",
+                        "confidence": "MEDIUM"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 0 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 2 players. 1 or more Fail cards make the mission fail.\n- This resistance player is on the team: no. This resistance player proposed this team: no.\n- How trustworthy the players on the team other than this resistance player look: 0 SUSPECT, 2 UNSURE, 0 TRUSTED.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "The proposed team consists of two players, both rated as UNSURE, meaning neither is currently identified as a spy. Since the Resistance player is not on the team, their vote is purely strategic to avoid wasting a mission attempt. With no SUSPECT players on the team, the risk of a spy causing a failure is relatively low compared to other team compositions. Approving the team allows the mission to proceed, which is generally favorable for the Resistance's goal of achieving 3 successes. Rejecting the team without strong evidence of spies would be a waste of a mission attempt and could help the Spies reach their win condition faster.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "The team contains no SUSPECT players, only UNSURE ones, making it the safest available option to advance the mission. Rejecting would waste a mission attempt with no strong evidence against the team, helping the spies reach their win condition.",
+                        "APPROVE": "LIKELY",
+                        "REJECT": "UNLIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 0 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 2 players. 1 or more Fail cards make the mission fail.\n- This resistance player is on the team: no. This resistance player proposed this team: yes.\n- How trustworthy the players on the team other than this resistance player look: 0 SUSPECT, 2 UNSURE, 0 TRUSTED.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This resistance player proposed the team, so they likely believe the members are safe. The team contains no SUSPECT players, only UNSURE ones, which suggests a relatively low risk of spies being present. Since this player is not on the team, they cannot directly influence the mission outcome but can affect the game's progress. Approving the team advances the mission count, while rejecting it wastes a turn and potentially gives spies an advantage.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "As the proposer, this player believes the team is safe. The team has no SUSPECT players, only UNSURE ones, indicating a low risk of spies. Approving advances the mission count toward the Resistance victory condition.",
+                        "APPROVE": "LIKELY",
+                        "REJECT": "UNLIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 0 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 2 players. 1 or more Fail cards make the mission fail.\n- This resistance player is on the team: yes. This resistance player proposed this team: no.\n- How trustworthy the players on the team other than this resistance player look: 0 SUSPECT, 1 UNSURE, 0 TRUSTED.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This resistance player is on the team, so their personal success depends on the mission succeeding. The team includes one UNSURE player, which introduces a small risk of a spy, but no confirmed SUSPECTs. Since the player proposed a different team, they are not trying to sabotage this specific mission. Approving the team is the logical choice to attempt a win, as rejecting it without a clear spy threat wastes a mission turn.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "The player is on the team and has no reason to sabotage; the only risk is one UNSURE player, which is a low enough risk to approve.",
+                        "APPROVE": "LIKELY",
+                        "REJECT": "UNLIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 0 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 2 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team: no. Spies on the team other than this spy player: 0.\n- This spy player proposed this team: yes.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This spy proposed a team with no other spies, meaning it has no direct help to cause failure. Since the spy is not on the team, it cannot play a Fail card itself. Approving the team risks a mission success, while rejecting it risks revealing the spy's identity as the proposer. However, rejecting a team the spy proposed is a common bluffing tactic to confuse the Resistance.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "As the proposer of a team with no spies, the spy cannot directly cause the mission to fail. Approving risks a successful mission, which is undesirable. Rejecting is a strategic bluff to confuse the Resistance and potentially waste a mission attempt, aligning with the spy's goal of causing failures or stalling.",
+                        "APPROVE": "UNLIKELY",
+                        "REJECT": "LIKELY",
+                        "confidence": "MEDIUM"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 0 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 2 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team: no. Spies on the team other than this spy player: 1.\n- This spy player proposed this team: no.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This spy player is not on the mission team, but there is one other spy on the team who can ensure the mission fails with a Fail card. Approving the team directly advances the spies' win condition without risk of exposure for this specific spy. Rejecting the team wastes a turn and gives the Resistance another chance to build a successful mission, which is counterproductive. Therefore, the spy should vote to approve to let the other spy do the work.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "The spy is not on the team, but another spy is. Approving lets the teammate fail the mission safely, advancing the spy win condition without exposing this spy. Rejecting wastes a turn and risks giving the Resistance a chance to succeed.",
+                        "APPROVE": "LIKELY",
+                        "REJECT": "UNLIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 0 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 2 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team: yes. Spies on the team other than this spy player: 0.\n- This spy player proposed this team: no.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This spy is on the mission team with no other spies, so the mission will fail if this spy plays a Fail card. Since the spy wants missions to fail, letting this mission proceed is beneficial for the faction. However, the spy also wants to stay hidden, and being on a team that fails might raise suspicion if others deduce the spy's role. Approving the team allows the mission to happen, while rejecting it wastes a turn and might alert others to the spy's presence if the rejection pattern is analyzed. The immediate benefit of a failed mission outweighs the risk of exposure in the early game.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "This spy is on the team, so the mission will fail if they play a Fail card. Letting the mission proceed directly advances the spy's goal of causing 3 mission failures. Rejecting would waste a turn without guaranteeing a failure and might raise suspicion.",
+                        "APPROVE": "LIKELY",
+                        "REJECT": "UNLIKELY",
+                        "confidence": "MEDIUM"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 0 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 2 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team: no. Spies on the team other than this spy player: 1.\n- This spy player proposed this team: yes.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This spy proposed the team, indicating a strategic choice to include another spy. Since this spy is not on the team, their primary goal is to ensure the mission fails, which the other spy can do. Approving the team would allow the mission to proceed, giving the other spy a chance to sabotage it. Rejecting the team would waste a turn and potentially alert the Resistance to the spies' presence. Therefore, approving is the logical choice to let the other spy act.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "This spy proposed the team, indicating a strategic choice to include another spy. Since this spy is not on the team, their primary goal is to ensure the mission fails, which the other spy can do. Approving the team would allow the mission to proceed, giving the other spy a chance to sabotage it. Rejecting the team would waste a turn and potentially alert the Resistance to the spies' presence.",
+                        "APPROVE": "LIKELY",
+                        "REJECT": "UNLIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Game history:\n\n--- Mission 1 ---\nMission 1, proposal 1: APPROVED, and the mission FAILED. Player 4 proposed the team Player 2, Player 5.\n  Approved by Player 0, Player 1, Player 2, Player 3, Player 4, Player 5. Rejected by nobody.\nRate every player: SUSPECT, UNSURE or TRUSTED.",
+                    "cot_analysis": "The mission failed, so at least one spy is among Player 2 or Player 5. Since all players approved the team, no one can be eliminated based on voting behavior yet. We need to wait for more missions to see if other players are involved in failures or if successful missions help identify resistance members.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "Mission 1 failed, meaning at least one spy is among Player 2 or Player 5. Since all players approved the team, no voting behavior eliminates anyone yet. Player 2 and Player 5 are suspects due to the failure, while others remain unsure.",
+                        "player_0": "UNSURE",
+                        "player_1": "UNSURE",
+                        "player_2": "SUSPECT",
+                        "player_3": "UNSURE",
+                        "player_4": "UNSURE",
+                        "player_5": "SUSPECT"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 1 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 3 players. 1 or more Fail cards make the mission fail.\n- Options: WITHOUT_ME_0SUSPECT_3UNSURE_0TRUSTED, WITHOUT_ME_1SUSPECT_2UNSURE_0TRUSTED, WITH_ME_0SUSPECT_2UNSURE_0TRUSTED, WITH_ME_1SUSPECT_1UNSURE_0TRUSTED\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This resistance player wants to maximize the chance of mission success by avoiding spies. The current score is tight (0-1), so a failure is costly. The best team composition would be all resistance players, but that's not an option here. Among the choices, teams with fewer suspects and unsure players are better, but all options include at least 2 unsure players. The player would prefer being on the team if it allows for a better composition, but here the composition is the main factor.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "All options include 2 or more UNSURE players, which increases the risk of spies on the team. The team size is only 3, so including UNSURE players is necessary. WITH_ME_0SUSPECT_2UNSURE_0TRUSTED is the best option because it has no SUSPECTs, making it the safest among the choices, though still risky due to the UNSURE players.",
+                        "WITHOUT_ME_0SUSPECT_3UNSURE_0TRUSTED": "UNLIKELY",
+                        "WITHOUT_ME_1SUSPECT_2UNSURE_0TRUSTED": "UNLIKELY",
+                        "WITH_ME_0SUSPECT_2UNSURE_0TRUSTED": "NEUTRAL",
+                        "WITH_ME_1SUSPECT_1UNSURE_0TRUSTED": "UNLIKELY",
+                        "confidence": "MEDIUM"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 1 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 3 players. 1 or more Fail cards make the mission fail.\n- Options: WITHOUT_ME_0_PARTNERS, WITHOUT_ME_1_PARTNERS, WITH_ME_0_PARTNERS, WITH_ME_1_PARTNERS\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "The spy wants missions to fail, but also wants to avoid being identified as a spy. Putting no spy on the team (WITHOUT_ME_0) guarantees mission success, which is bad for the spy. Putting one spy on the team (WITH_ME_0 or WITHOUT_ME_1) gives a chance to sabotage, but risks exposure if the mission fails. Putting two spies (WITH_ME_1) ensures failure but makes the spy very likely to be caught.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "A team with no spy guarantees mission success (bad for spies). A team with one spy allows sabotage while minimizing exposure risk. A team with two spies ensures failure but greatly increases the chance of being identified as a spy.",
+                        "WITHOUT_ME_0_PARTNERS": "UNLIKELY",
+                        "WITHOUT_ME_1_PARTNERS": "LIKELY",
+                        "WITH_ME_0_PARTNERS": "LIKELY",
+                        "WITH_ME_1_PARTNERS": "UNLIKELY",
+                        "confidence": "MEDIUM"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 1 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 2 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team. Spies on the team other than this spy player: 0.\n- Options: SUCCESS, FAIL\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This spy is alone on the team, so playing FAIL guarantees the mission fails and helps the Spy faction reach 2 failures. However, it also makes this spy the sole suspect for the failed mission. Playing SUCCESS risks the mission succeeding, which hurts the Spy faction's goal of 3 failures. The spy must weigh immediate faction victory against personal safety and future team inclusion.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "The spy is alone on the team, so playing FAIL guarantees a mission failure, bringing the score to 2-1 and moving closer to the Spy win condition of 3 failures. Playing SUCCESS risks a Resistance win.",
+                        "SUCCESS": "UNLIKELY",
+                        "FAIL": "LIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 1 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 2 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team. Spies on the team other than this spy player: 1.\n- Options: SUCCESS, FAIL\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "The spy player is on a 2-person team with another spy, meaning the mission will fail regardless of this player's card. Playing FAIL is safe because the other spy will cover for them, avoiding suspicion. Playing SUCCESS is unnecessary but also harmless since the mission is already doomed by the partner's action. The primary goal is to survive the vote after a failure, so avoiding blame is the priority.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "With another spy on the team, the mission is guaranteed to fail regardless of this spy's card. Playing FAIL is the standard cooperative spy move to ensure the mission fails and to avoid drawing extra suspicion by being the sole cause of failure. Playing SUCCESS is unnecessary but not harmful since the outcome is already sealed by the partner.",
+                        "SUCCESS": "NEUTRAL",
+                        "FAIL": "LIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 1 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 3 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team. Spies on the team other than this spy player: 0.\n- Options: SUCCESS, FAIL\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "The spy is on a 3-player team with no other spies present, meaning this spy's card is the only one that can determine the mission's outcome. Playing a FAIL card guarantees the mission fails, advancing the spy faction toward victory with a score of 2-1. Playing SUCCESS risks the mission succeeding, which would be a setback for the spy and potentially expose their faction's strategy. The spy's primary goal is mission failure, so they would logically choose the option that ensures it.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "As the only spy on the team, this player's card is the sole determinant of the mission's outcome. Playing FAIL guarantees a win for the spy faction, moving the score to 2-1, while playing SUCCESS risks a Resistance victory.",
+                        "SUCCESS": "UNLIKELY",
+                        "FAIL": "LIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 1 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 3 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team. Spies on the team other than this spy player: 1.\n- Options: SUCCESS, FAIL\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This spy player is on a team of 3 with one other spy, meaning the team has a built-in guarantee of at least one Fail card if the other spy plays one. Playing FAIL directly helps the mission fail but increases suspicion on this specific player, potentially leading to future exclusion. Playing SUCCESS is safer for hiding identity but relies on the other spy to fail the mission, which might not happen if they are cautious. The spy must balance the immediate goal of failure against the long-term goal of remaining undetected.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "With another spy on the team, the mission is almost guaranteed to fail regardless of this spy's action. Playing FAIL ensures the mission fails (fulfilling the spy's goal) and leverages the partner's presence to mask individual blame. Playing SUCCESS is risky because it relies on the partner to fail, and if the partner plays SUCCESS, the mission succeeds, which is bad for the spy faction.",
+                        "SUCCESS": "UNLIKELY",
+                        "FAIL": "LIKELY",
+                        "confidence": "MEDIUM"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 1 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 4 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team. Spies on the team other than this spy player: 0.\n- Options: SUCCESS, FAIL\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "The spy wants the mission to fail to win the game, but also wants to avoid suspicion. With 4 players on the team and only one spy, playing FAIL guarantees the mission fails and makes this spy a prime suspect. Playing SUCCESS leaves the outcome dependent on the other three players, allowing the spy to blend in if they fail. However, with 0 other spies on the team, the resistance has no reason to suspect a spy is present unless the mission fails. If the mission fails, everyone on the team is suspected, so the spy risks being identified. If the mission succeeds, the spy is safe but the resistance gets closer to winning. The spy must weigh the immediate win against the risk of being found out.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "With 0 other spies on the team, the spy is the only one who can guarantee a failure. The current score (0-1) means one more failure wins the game for the spies. Playing FAIL is the only way to secure the victory immediately, despite the increased suspicion. Playing SUCCESS leaves the outcome to chance and risks the Resistance winning.",
+                        "SUCCESS": "UNLIKELY",
+                        "FAIL": "LIKELY",
+                        "confidence": "MEDIUM"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 1 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 4 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team. Spies on the team other than this spy player: 1.\n- Options: SUCCESS, FAIL\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This spy is on a 4-player team with one other spy, meaning the Resistance has only 2 players on the team. The mission fails if 1 or more Fail cards are played, so the Resistance needs both spies to play SUCCESS to pass. If this spy plays FAIL, the mission will fail regardless of the other spy's action, directly helping the Spy faction win. Playing FAIL also increases suspicion on the team, but with the score at 0-1, a failure moves the game closer to the 3-failure victory condition.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "With 0-1 score, a failure brings the spies closer to victory (3 failures needed). Playing FAIL guarantees mission failure since only 1 Fail is needed, and this spy alone can cause it. Playing SUCCESS helps the Resistance, which is against the spy's goal.",
+                        "SUCCESS": "UNLIKELY",
+                        "FAIL": "LIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 1 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 3 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team: no. Spies on the team other than this spy player: 0.\n- This spy player proposed this team: no.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "The spy is not on the team and there are no other spies on the team, so the mission is likely to succeed. Approving the team helps the Resistance get closer to winning, which is bad for the spy. Rejecting the team gives the spy a chance to sabotage the mission indirectly, but it also risks revealing the spy's alignment if the rejection is too frequent. However, since the spy is not on the team, rejecting it is a safer way to try to fail the mission without direct involvement. The spy should reject to try to fail the mission, but must be careful not to be identified as a spy.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "The spy is not on the team and no other spies are on it, so the mission will likely succeed. Approving helps the Resistance win, which is bad for the spy. Rejecting gives a chance to sabotage the mission indirectly without direct involvement.",
+                        "APPROVE": "UNLIKELY",
+                        "REJECT": "LIKELY",
+                        "confidence": "MEDIUM"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 1 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 3 players. 1 or more Fail cards make the mission fail.\n- This resistance player is on the team: no. This resistance player proposed this team: no.\n- How trustworthy the players on the team other than this resistance player look: 2 SUSPECT, 1 UNSURE, 0 TRUSTED.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "The team contains 2 SUSPECT players and 0 TRUSTED players, making it highly likely to fail. Since this resistance player is not on the team, they cannot influence the mission outcome directly. Rejecting the team would be rational to avoid a likely failure, but doing so repeatedly could lead to the spies winning if 5 teams are rejected. The player must balance avoiding failure with not triggering the spy win condition.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "The team contains 2 SUSPECT players and 0 TRUSTED players, making it highly likely to fail. As a resistance player not on the team, the rational choice is to reject to avoid a likely failure, despite the risk of accumulating rejections.",
+                        "APPROVE": "UNLIKELY",
+                        "REJECT": "LIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 1 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 3 players. 1 or more Fail cards make the mission fail.\n- This resistance player is on the team: yes. This resistance player proposed this team: no.\n- How trustworthy the players on the team other than this resistance player look: 2 SUSPECT, 0 UNSURE, 0 TRUSTED.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "The team has 2 SUSPECT players and the current player is on the team, meaning 3 out of 3 members are likely spies or the mission is doomed. Since the mission fails with just 1 Fail card and spies control the majority, approving would almost certainly lead to a mission failure. Rejecting is the only rational choice to prevent a guaranteed failure and avoid giving the spies a win condition.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "The team consists of 2 SUSPECT players plus this resistance player, meaning 2 out of 3 members are likely spies. With spies controlling the majority, the mission is almost certainly doomed to fail. Approving would waste a mission and bring the Resistance closer to defeat, while rejecting prevents a guaranteed failure.",
+                        "APPROVE": "UNLIKELY",
+                        "REJECT": "LIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 1 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 3 players. 1 or more Fail cards make the mission fail.\n- This resistance player is on the team: yes. This resistance player proposed this team: yes.\n- How trustworthy the players on the team other than this resistance player look: 1 SUSPECT, 1 UNSURE, 0 TRUSTED.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This resistance player proposed a team that includes themselves and a SUSPECT, making a mission failure likely. Since they are on the team, they risk a failure that would help the spies win. However, rejecting a team they proposed could also signal weakness or be a trap, but given the high risk of failure, they might prefer to reject and try a safer team later.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "The player proposed a team containing a SUSPECT, making mission failure highly probable. As a Resistance member on the team, they would likely prefer to reject this risky team to avoid contributing to a failure.",
+                        "APPROVE": "UNLIKELY",
+                        "REJECT": "LIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 1 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 3 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team: no. Spies on the team other than this spy player: 1.\n- This spy player proposed this team: no.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "The spy is not on the team, but there is another spy on the team who can cause the mission to fail. Approving the team gives the other spy a chance to succeed in sabotaging the mission. Rejecting the team wastes a turn and brings the spies closer to losing if 5 rejections occur on a single mission. Since the mission score is 0-1, the spies are already behind and need missions to fail, making approval the better strategic choice.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "The spy is not on the team but another spy is, giving the faction a chance to sabotage the mission. Rejecting would waste a turn and risk the \"5 rejections\" loss condition, which is dangerous given the current 0-1 score.",
+                        "APPROVE": "LIKELY",
+                        "REJECT": "UNLIKELY",
+                        "confidence": "MEDIUM"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 1 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 3 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team: yes. Spies on the team other than this spy player: 0.\n- This spy player proposed this team: no.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "The spy is on the team and knows it will fail, so approving helps the Resistance. Rejecting the team wastes a mission attempt and brings the spies closer to winning by failure count, but also risks triggering the \"5 rejections\" win condition for the spies if this is the fifth rejection on a mission. Since only 1 mission has failed so far, rejecting is strategically sound to increase the failure count without yet risking the game-ending rejection limit. The spy should reject to push the score toward their victory condition.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "The spy is on the team and knows it will fail, so approving helps the Resistance. Rejecting the team wastes a mission attempt and brings the spies closer to winning by failure count, but also risks triggering the \"5 rejections\" win condition for the spies if this is the fifth rejection on a mission. Since only 1 mission has failed so far, rejecting is strategically sound to increase the failure count without yet risking the game-ending rejection limit. The spy should reject to push the score toward their victory condition.",
+                        "APPROVE": "UNLIKELY",
+                        "REJECT": "LIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 1 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 3 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team: yes. Spies on the team other than this spy player: 0.\n- This spy player proposed this team: yes.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This spy player proposed the team, indicating an intent to sabotage it. Since the spy is on the team and there are no other spies, the spy can easily cause a mission failure. Approving the team would allow the mission to proceed, giving the Resistance a chance to succeed. Rejecting the team immediately stops the mission and moves closer to the spies' win condition.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "This spy proposed the team, indicating a clear intent to sabotage. Since the spy is on the team and there are no other spies, the spy can easily cause the mission to fail. Approving would allow the Resistance a chance to succeed, while rejecting immediately advances the spies' win condition.",
+                        "APPROVE": "UNLIKELY",
+                        "REJECT": "LIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 1 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 3 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team: yes. Spies on the team other than this spy player: 1.\n- This spy player proposed this team: no.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This spy is on the team with another spy, giving the team a 2/3 chance of failure if both play Fail. Approving the mission risks a success if the other spy plays safe, but rejecting it risks a team vote rejection if the Resistance suspects the team is compromised. Since the spy wants missions to fail, approving is the only way to attempt a failure, while rejecting helps the Resistance by wasting a turn. The spy should approve to try to sabotage the mission, unless they fear being identified as a spy for always rejecting.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "This spy is on the mission team with another spy, giving the team a high chance of failure. Approving allows the mission to proceed and potentially fail, advancing the spy's goal. Rejecting would waste a turn and help the Resistance.",
+                        "APPROVE": "LIKELY",
+                        "REJECT": "UNLIKELY",
+                        "confidence": "MEDIUM"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 1 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 3 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team: yes. Spies on the team other than this spy player: 1.\n- This spy player proposed this team: yes.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This spy player proposed the team, indicating a strategic choice to include specific players. Since this spy is on the team along with another spy, the mission has a high probability of failing naturally if the other spy cooperates. Approving the team allows the mission to proceed, which is favorable for the spy faction's goal of causing failures. Rejecting the team would be counterproductive as it wastes a turn and potentially gives the Resistance an advantage by not allowing a likely spy success.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "The spy proposed the team, indicating a strategic choice to include specific players. With two spies on the team, the mission has a high probability of failing, which aligns with the spy's goal. Approving allows the mission to proceed; rejecting would waste a turn and potentially help the Resistance by preventing a likely spy success.",
+                        "APPROVE": "LIKELY",
+                        "REJECT": "UNLIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 1 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 3 players. 1 or more Fail cards make the mission fail.\n- Options: WITHOUT_ME_0SUSPECT_3UNSURE_0TRUSTED, WITHOUT_ME_1SUSPECT_2UNSURE_0TRUSTED, WITHOUT_ME_2SUSPECT_1UNSURE_0TRUSTED, WITH_ME_0SUSPECT_2UNSURE_0TRUSTED, WITH_ME_1SUSPECT_1UNSURE_0TRUSTED, WITH_ME_2SUSPECT_0UNSURE_0TRUSTED\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This resistance player wants to maximize the chance of mission success by avoiding spies. Since spies know each other, a team with 0 suspects is the safest option. Teams with 1 or 2 suspects are risky because at least one spy is likely present, increasing the chance of a fail card. The player should prioritize teams with no suspects, even if they include unsure players, over teams with any suspects.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "A resistance player prioritizes mission success by avoiding spies. Teams with 0 suspects (even if all unsure) are the safest, as spies are more likely to be flagged as suspects. Teams with 1 or 2 suspects are risky because at least one spy is likely present.",
+                        "WITHOUT_ME_0SUSPECT_3UNSURE_0TRUSTED": "LIKELY",
+                        "WITHOUT_ME_1SUSPECT_2UNSURE_0TRUSTED": "UNLIKELY",
+                        "WITHOUT_ME_2SUSPECT_1UNSURE_0TRUSTED": "UNLIKELY",
+                        "WITH_ME_0SUSPECT_2UNSURE_0TRUSTED": "LIKELY",
+                        "WITH_ME_1SUSPECT_1UNSURE_0TRUSTED": "UNLIKELY",
+                        "WITH_ME_2SUSPECT_0UNSURE_0TRUSTED": "UNLIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 2 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 4 players. 1 or more Fail cards make the mission fail.\n- Options: WITHOUT_ME_0_PARTNERS, WITHOUT_ME_1_PARTNERS, WITH_ME_0_PARTNERS, WITH_ME_1_PARTNERS\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "The spy needs to fail a mission to win, but must avoid being identified to prevent being banned from future teams. A team with no spies (WITHOUT_ME_0) cannot fail, so it's useless for winning but safe for hiding. A team with one spy (WITH_ME_0 or WITHOUT_ME_1) can fail, but the spy risks exposure if the mission fails. A team with two spies (WITH_ME_1) guarantees failure but increases the chance both are caught if the mission fails. Given the score is close, the spy must balance immediate win probability against long-term survival.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "A team with no spies (WITHOUT_ME_0) cannot fail, so it's useless for winning but safe for hiding. A team with one spy (WITH_ME_0 or WITHOUT_ME_1) can fail, balancing the need to win with the risk of exposure. A team with two spies (WITH_ME_1) guarantees failure but increases the chance both are caught if the mission fails.",
+                        "WITHOUT_ME_0_PARTNERS": "UNLIKELY",
+                        "WITHOUT_ME_1_PARTNERS": "LIKELY",
+                        "WITH_ME_0_PARTNERS": "LIKELY",
+                        "WITH_ME_1_PARTNERS": "NEUTRAL",
+                        "confidence": "MEDIUM"
+                    }
+                },
+                {
+                    "question": "Game history:\n\n--- Mission 1 ---\nMission 1, proposal 1: APPROVED, and the mission FAILED. Player 4 proposed the team Player 2, Player 5.\n  Approved by Player 0, Player 1, Player 2, Player 3, Player 4, Player 5. Rejected by nobody.\n\n--- Mission 2 ---\nMission 2, proposal 1: APPROVED, and the mission FAILED. Player 5 proposed the team Player 2, Player 4, Player 5.\n  Approved by Player 0, Player 1, Player 3, Player 4, Player 5. Rejected by Player 2.\nRate every player: SUSPECT, UNSURE or TRUSTED.",
+                    "cot_analysis": "Mission 1 failed with players 2 and 5 on the team, so at least one of them is a spy. Mission 2 also failed with players 2, 4, and 5 on the team. Since player 2 was on both failed missions, they are highly suspicious. Player 5 was also on both failed missions, making them a strong suspect as well. Player 4 was only on the second failed mission, so they are less suspicious but still a possibility. Players 0, 1, and 3 have not been on any failed missions yet, making them more likely to be resistance.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "Mission 1 failed with players 2 and 5, meaning at least one is a spy. Mission 2 failed with players 2, 4, and 5. Player 2 was on both failed missions, making them a very strong suspect. Player 5 was also on both failed missions, making them a strong suspect. Player 4 was only on the second failed mission, so they are less suspicious but still a possibility. Players 0, 1, and 3 have not been on any failed missions yet, making them more likely to be resistance.",
+                        "player_0": "TRUSTED",
+                        "player_1": "TRUSTED",
+                        "player_2": "SUSPECT",
+                        "player_3": "TRUSTED",
+                        "player_4": "SUSPECT",
+                        "player_5": "SUSPECT"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 2 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 4 players. 1 or more Fail cards make the mission fail.\n- Options: WITHOUT_ME_2SUSPECT_0UNSURE_2TRUSTED, WITHOUT_ME_3SUSPECT_0UNSURE_1TRUSTED, WITH_ME_1SUSPECT_0UNSURE_2TRUSTED, WITH_ME_2SUSPECT_0UNSURE_1TRUSTED, WITH_ME_3SUSPECT_0UNSURE_0TRUSTED\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "The Resistance is at a critical disadvantage with 2 failures already, needing only 1 more to lose. The leader, a Resistance player, must prioritize minimizing spy presence to maximize mission success chances. Teams with fewer or no SUSPECT players are clearly preferred, as spies are the primary threat to mission success. Options with 2 or 3 SUSPECTs are highly risky and likely to fail, while those with 1 SUSPECT offer a better chance. The leader will likely avoid options that include too many SUSPECTs, especially with the low score.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "The Resistance is in a precarious position with 2 failures already, needing only 1 more to lose. The leader must prioritize minimizing spy presence. Options with 2 or 3 SUSPECTs are highly risky and likely to fail, while those with 1 SUSPECT offer a better chance. The option WITH_ME_1SUSPECT_0UNSURE_2TRUSTED is the best available but still carries risk, so it's NEUTRAL rather than LIKELY. All other options are clearly UNLIKELY due to high spy counts.",
+                        "WITHOUT_ME_2SUSPECT_0UNSURE_2TRUSTED": "UNLIKELY",
+                        "WITHOUT_ME_3SUSPECT_0UNSURE_1TRUSTED": "UNLIKELY",
+                        "WITH_ME_1SUSPECT_0UNSURE_2TRUSTED": "NEUTRAL",
+                        "WITH_ME_2SUSPECT_0UNSURE_1TRUSTED": "UNLIKELY",
+                        "WITH_ME_3SUSPECT_0UNSURE_0TRUSTED": "UNLIKELY",
+                        "confidence": "MEDIUM"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 2 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 2 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team. Spies on the team other than this spy player: 0.\n- Options: SUCCESS, FAIL\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This spy is alone on the team, meaning their card alone determines the mission's success or failure. Since the spies win on 3 mission failures and the current score is 0-2, causing a failure now would bring the spies to victory. Playing SUCCESS would help the Resistance win, which is against the spy's interests.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "The spy is alone on a 2-player team, so their card alone determines the outcome. With the score at 0-2, a failure would give the spies 3 failures and win the game immediately. Playing SUCCESS would help the Resistance win.",
+                        "SUCCESS": "UNLIKELY",
+                        "FAIL": "LIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 2 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 2 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team. Spies on the team other than this spy player: 1.\n- Options: SUCCESS, FAIL\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "The spy needs to decide whether to play a FAIL card to help the spies win or a SUCCESS card to blend in. With one other spy on the team, the mission will fail regardless of this spy's choice if both play FAIL, or if one plays FAIL and the other plays SUCCESS. Playing FAIL guarantees the mission fails, directly helping the spy faction. Playing SUCCESS risks the mission succeeding if the other spy plays SUCCESS, which hurts the spy faction. However, playing FAIL increases suspicion on this spy if the mission fails, potentially leading to being found and removed. The spy must balance the immediate goal of failing the mission with the long-term goal of staying hidden.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "With one other spy on the team, playing FAIL guarantees the mission fails (since 1 fail is enough), directly advancing the spy win condition. Playing SUCCESS risks the mission succeeding if the other spy also plays SUCCESS, which is a loss for the spy faction. While playing FAIL increases suspicion, the immediate benefit of securing a win outweighs the risk of being found in this specific scenario.",
+                        "SUCCESS": "UNLIKELY",
+                        "FAIL": "LIKELY",
+                        "confidence": "MEDIUM"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 2 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 3 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team. Spies on the team other than this spy player: 0.\n- Options: SUCCESS, FAIL\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "The mission currently needs one more failure for the Spies to win, and this spy is the only one on the team who can cause it. Playing FAIL directly achieves the win condition, while playing SUCCESS gives the Resistance a chance to win. Since the spy knows there are no other spies on the team, the risk of being identified as a spy is high if the mission fails, but the immediate win is the primary goal.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "With 2 failures already and 1 needed to win, and this spy being the only one on the team, playing FAIL guarantees the spy faction's victory. Playing SUCCESS would allow the Resistance to win on the next success.",
+                        "SUCCESS": "UNLIKELY",
+                        "FAIL": "LIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 2 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 3 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team. Spies on the team other than this spy player: 1.\n- Options: SUCCESS, FAIL\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "The mission team has 3 players, including this spy and one other spy. Since only one Fail card is needed to fail the mission, this spy can easily cause a failure by playing a FAIL card, even if the other spy plays SUCCESS. A failed mission brings the score to 1-2, keeping the game alive while advancing the spies' win condition. However, playing FAIL makes this spy a prime suspect for the next team vote, which could lead to being excluded from future missions.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "With 2 failed missions already, the spies need only 1 more to win. This spy can guarantee a failure with a FAIL card, even if the other spy plays SUCCESS. Playing SUCCESS would risk the mission succeeding, which is against the spy's goal.",
+                        "SUCCESS": "UNLIKELY",
+                        "FAIL": "LIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 2 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 4 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team. Spies on the team other than this spy player: 0.\n- Options: SUCCESS, FAIL\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "The spy needs a mission to fail to reach the win condition of 3 failures, and this is the third failure needed. Since the spy is the only spy on the team, playing FAIL guarantees the mission fails. Playing SUCCESS gives the resistance a chance to succeed, which is against the spy's goal.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "The spy needs exactly one more failure to win. Playing FAIL guarantees the mission fails, achieving the win condition. Playing SUCCESS gives the Resistance a chance to win, which is directly against the spy's goal.",
+                        "SUCCESS": "UNLIKELY",
+                        "FAIL": "LIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 2 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 4 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team. Spies on the team other than this spy player: 1.\n- Options: SUCCESS, FAIL\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "The spy is on a 4-player team with one other spy, meaning the Resistance has only 2 members on this team. With 2 failed missions already, the Resistance is close to losing, so the spy's primary goal is to push for a third failure. Playing FAIL guarantees mission failure, directly advancing the spy faction's win condition. Playing SUCCESS risks the mission succeeding, which would help the Resistance and delay their victory.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "With 2 missions already failed, the Resistance needs only 1 more success to win, while the Spies need 1 more failure. Playing FAIL guarantees the mission fails, directly achieving the spy's win condition. Playing SUCCESS risks the mission succeeding, which would hand a win to the Resistance.",
+                        "SUCCESS": "UNLIKELY",
+                        "FAIL": "LIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 2 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 4 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team: yes. Spies on the team other than this spy player: 1.\n- This spy player proposed this team: yes.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This spy player proposed the team, indicating a strategic choice to include specific players. With two spies on the team, the mission is highly likely to fail if they both play Fail cards. Approving the team allows this immediate failure, directly advancing the Spy win condition. Rejecting the team would waste a turn and potentially alert other players to the Spy's presence, risking exposure.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "This spy proposed the team, indicating a strategic choice to include specific players. With two spies on the team, the mission is highly likely to fail if they both play Fail cards. Approving the team allows this immediate failure, directly advancing the Spy win condition. Rejecting the team would waste a turn and potentially alert other players to the Spy's presence, risking exposure.",
+                        "APPROVE": "LIKELY",
+                        "REJECT": "UNLIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 2 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 4 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team: yes. Spies on the team other than this spy player: 1.\n- This spy player proposed this team: no.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This spy is on the team with another spy, giving the faction a 2/4 chance of failure if both play Fail. Approving the mission risks a failure but avoids triggering the 5-rejection win condition. Rejecting the mission is safer for the spies' win condition but risks revealing this spy if the team is accepted later. Given the score, the spies need one more failure to win, making this a high-stakes vote.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "The spy is on the team with another spy, giving a strong chance of mission failure. Approving allows the spies to potentially win on this mission without risking the 5-rejection win condition. Rejecting would waste a potential win and increase the risk of being identified if the team is later accepted.",
+                        "APPROVE": "LIKELY",
+                        "REJECT": "UNLIKELY",
+                        "confidence": "MEDIUM"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 2 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 4 players. 1 or more Fail cards make the mission fail.\n- This resistance player is on the team: yes. This resistance player proposed this team: no.\n- How trustworthy the players on the team other than this resistance player look: 1 SUSPECT, 0 UNSURE, 2 TRUSTED.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "The Resistance is at 0-2, meaning they need 3 successes to win while the Spies need only 1 failure. The team includes this resistance player and has 1 SUSPECT and 2 TRUSTED players. With a high risk of failure due to the SUSPECT, voting REJECT might seem logical to avoid a loss, but rejecting teams wastes the limited number of successes available. Since this player is on the team, they have a direct stake in the mission's outcome, and the presence of TRUSTED players offers a chance for success.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "The Resistance is at 0-2, needing 3 successes to win while the Spies only need 1 failure. Rejecting now would waste a chance to turn the score. Although there is a SUSPECT, the team also has 2 TRUSTED players, offering a reasonable chance of success. As a team member, this player has a direct stake in the mission succeeding.",
+                        "APPROVE": "NEUTRAL",
+                        "REJECT": "UNLIKELY",
+                        "confidence": "MEDIUM"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 2 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 4 players. 1 or more Fail cards make the mission fail.\n- This resistance player is on the team: no. This resistance player proposed this team: no.\n- How trustworthy the players on the team other than this resistance player look: 1 SUSPECT, 0 UNSURE, 3 TRUSTED.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "The mission team includes 3 TRUSTED players and only 1 SUSPECT player. With 3 trusted players on a team of 4, the probability of success is high, making the mission likely to succeed. Since this player is not on the team, their vote doesn't affect the mission outcome directly, but approving a strong team helps the Resistance reach 3 successes. Rejecting a team with such a high success probability would be counterproductive and risk losing the game if the Resistance needs this mission to win.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "The team has 3 TRUSTED players and only 1 SUSPECT, making success highly probable. Approving helps the Resistance progress toward victory, while rejecting wastes a chance to win.",
+                        "APPROVE": "LIKELY",
+                        "REJECT": "UNLIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 2 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 4 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team: yes. Spies on the team other than this spy player: 0.\n- This spy player proposed this team: yes.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This spy player is on the team and proposed it, meaning they have a direct opportunity to cause a failure with their Fail card. Since they are the proposer, they likely know the team composition and can influence the vote. Approving the team allows them to play their Fail card and win the game, while rejecting it would be counterproductive since they are already on the team.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "The spy is on the team and proposed it, giving them a direct opportunity to use their Fail card to sabotage the mission. Approving allows them to execute this plan, while rejecting would waste their turn and help the Resistance.",
+                        "APPROVE": "LIKELY",
+                        "REJECT": "UNLIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 2 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 4 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team: no. Spies on the team other than this spy player: 1.\n- This spy player proposed this team: no.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This spy is not on the team, so it cannot directly cause a failure. However, there is already one spy on the team who can make the mission fail. Approving the team risks a failure only if the other spy acts, which is a 50/50 chance of success for the Resistance. Rejecting the team guarantees a failure for the mission, helping the Spy faction immediately. Since the game is close (0-2) and the spy wants to win, causing a failure is the priority. The spy should reject the team to ensure the mission fails.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "With the score at 0-2, the Spies are one failure away from winning. Since this spy is not on the team but another spy is, rejecting the team guarantees a mission failure and a win for the Spies, whereas approving risks the mission succeeding.",
+                        "APPROVE": "UNLIKELY",
+                        "REJECT": "LIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 2 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 4 players. 1 or more Fail cards make the mission fail.\n- This resistance player is on the team: yes. This resistance player proposed this team: yes.\n- How trustworthy the players on the team other than this resistance player look: 1 SUSPECT, 0 UNSURE, 2 TRUSTED.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This resistance player proposed the team and is on it, so they are committed to its success. The team has one SUSPECT player, which increases the risk of failure since spies can sabotage missions. However, rejecting now would waste a turn and potentially lead to 5 rejections if the spies keep pushing bad teams. Approving is necessary to make progress, even with the risk of failure.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "As the proposer and a team member, this resistance player is committed to the mission's success. While the SUSPECT player adds risk, rejecting now wastes a turn and could lead to 5 rejections (spy win) if the team keeps being blocked. Approving is the rational choice to advance toward the 3-success win condition.",
+                        "APPROVE": "LIKELY",
+                        "REJECT": "UNLIKELY",
+                        "confidence": "MEDIUM"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 2 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 4 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team: yes. Spies on the team other than this spy player: 0.\n- This spy player proposed this team: no.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This spy is on the mission team but is the only spy present, giving them a guaranteed ability to fail the mission. Approving the team allows the spy to use their Fail card to secure a win for the Spies. Rejecting the team would waste a guaranteed failure opportunity and potentially alert other players to a spy's presence if the rejection pattern is suspicious. Therefore, approving is the strategically superior move to achieve the faction's win condition.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "This spy is on the team with no other spies, guaranteeing they can fail the mission with their Fail card. Approving allows them to secure a win for the Spies. Rejecting would waste this guaranteed opportunity and risk revealing their identity.",
+                        "APPROVE": "LIKELY",
+                        "REJECT": "UNLIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 2 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 4 players. 1 or more Fail cards make the mission fail.\n- This spy player is on the team: no. Spies on the team other than this spy player: 0.\n- This spy player proposed this team: no.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "The spy is not on the team and there are no other spies on the team, so this mission will succeed regardless of the vote. Approving allows the mission to proceed, which is bad for the spy's faction. Rejecting wastes a team slot but doesn't help sabotage the mission itself. Since the spy wants missions to fail, they would prefer to reject, but it's a low-impact move here.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "The spy is not on the team and no other spies are, so the mission will succeed regardless. Approving allows the Resistance to get a success, which is bad for the spy. Rejecting wastes a team slot and delays the Resistance's progress, which aligns with the spy's goal of preventing successes.",
+                        "APPROVE": "UNLIKELY",
+                        "REJECT": "LIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Game history:\n\n--- Mission 1 ---\nMission 1, proposal 1: APPROVED, and the mission FAILED. Player 4 proposed the team Player 2, Player 5.\n  Approved by Player 0, Player 1, Player 2, Player 3, Player 4, Player 5. Rejected by nobody.\n\n--- Mission 2 ---\nMission 2, proposal 1: APPROVED, and the mission FAILED. Player 5 proposed the team Player 2, Player 4, Player 5.\n  Approved by Player 0, Player 1, Player 3, Player 4, Player 5. Rejected by Player 2.\n\n--- Mission 3 ---\nMission 3, proposal 1: REJECTED, so no mission was played. Player 0 proposed the team Player 0, Player 1, Player 2, Player 3.\n  Approved by Player 0, Player 2. Rejected by Player 1, Player 3, Player 4, Player 5.\nRate every player: SUSPECT, UNSURE or TRUSTED.",
+                    "cot_analysis": "Mission 1 failed with players 2 and 5, so at least one of them is a spy. Player 2 rejected the team for Mission 2, which included themselves and player 4, suggesting player 2 might be a spy trying to sabotage their own team or player 4 is a spy. The rejection of Mission 3's team (0, 1, 2, 3) by players 1, 3, 4, and 5 is significant, as it indicates strong suspicion among the Resistance about this specific group.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "Mission 1 failed with players 2 and 5, so at least one is a spy. Player 2 rejected their own team in Mission 2, which is highly suspicious behavior for a Resistance player (who would want their team to succeed) and suggests they are a spy trying to sabotage. Player 3 rejected Mission 3's team (0,1,2,3), but since 2 is likely a spy, this rejection is consistent with Resistance players spotting a spy. Player 5 is a suspect due to failing Mission 1. Players 0 and 4 have no direct evidence against them yet.",
+                        "player_0": "UNSURE",
+                        "player_1": "SUSPECT",
+                        "player_2": "SUSPECT",
+                        "player_3": "SUSPECT",
+                        "player_4": "UNSURE",
+                        "player_5": "SUSPECT"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 2 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 4 players. 1 or more Fail cards make the mission fail.\n- Options: WITHOUT_ME_2SUSPECT_2UNSURE_0TRUSTED, WITHOUT_ME_3SUSPECT_1UNSURE_0TRUSTED, WITH_ME_1SUSPECT_2UNSURE_0TRUSTED, WITH_ME_2SUSPECT_1UNSURE_0TRUSTED, WITH_ME_3SUSPECT_0UNSURE_0TRUSTED\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This resistance player is in a critical situation with 2 failed missions and only 1 success needed to win. The team size is 4, and any spy on the team risks failure. All options include only SUSPECT or UNSURE players, with no TRUSTED players available. Including myself (WITH_ME) gives me direct control to try to avoid picking too many suspects, but even then, the team is heavy on potential spies.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "With 2 failed missions, the Resistance is in a precarious position. All options lack TRUSTED players, meaning every team includes potential spies. WITH_ME_1SUSPECT_2UNSURE_0TRUSTED is the least risky as it limits suspects to 1, but still carries high failure risk. Other options with 2 or 3 suspects are clearly detrimental to the Resistance's goal of avoiding spies.",
+                        "WITHOUT_ME_2SUSPECT_2UNSURE_0TRUSTED": "UNLIKELY",
+                        "WITHOUT_ME_3SUSPECT_1UNSURE_0TRUSTED": "UNLIKELY",
+                        "WITH_ME_1SUSPECT_2UNSURE_0TRUSTED": "NEUTRAL",
+                        "WITH_ME_2SUSPECT_1UNSURE_0TRUSTED": "UNLIKELY",
+                        "WITH_ME_3SUSPECT_0UNSURE_0TRUSTED": "UNLIKELY",
+                        "confidence": "MEDIUM"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 2 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 4 players. 1 or more Fail cards make the mission fail.\n- This resistance player is on the team: no. This resistance player proposed this team: no.\n- How trustworthy the players on the team other than this resistance player look: 3 SUSPECT, 1 UNSURE, 0 TRUSTED.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "The proposed team has 3 SUSPECT players and only 1 UNSURE player, making it highly likely that the mission will fail due to spy interference. As a Resistance player not on the team, voting APPROVE would likely waste a mission and bring the Resistance closer to defeat. Voting REJECT might be strategically sound to avoid a guaranteed failure, but doing so could also help the spies if they are manipulating the vote. Given the high suspicion on the team, rejecting it seems more aligned with Resistance goals to prevent an immediate loss.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "The team contains 3 SUSPECT players and 0 TRUSTED players, making mission failure almost certain. Approving would waste a critical mission with no chance of success, while rejecting prevents an immediate loss and denies the spies a guaranteed failure.",
+                        "APPROVE": "UNLIKELY",
+                        "REJECT": "LIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 2 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 4 players. 1 or more Fail cards make the mission fail.\n- This resistance player is on the team: yes. This resistance player proposed this team: no.\n- How trustworthy the players on the team other than this resistance player look: 2 SUSPECT, 1 UNSURE, 0 TRUSTED.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "The mission team includes 2 SUSPECT players, which is a very high risk for failure since even one Fail card ends the mission. As a Resistance player on the team, this player wants the mission to succeed but knows the odds are stacked against them due to the suspicious teammates. Rejecting the team avoids an almost certain failure, but it also wastes a turn and brings the game closer to the Spy victory condition if more teams are rejected. Approving the team is a desperate gamble that could accidentally succeed if the spies don't play Fail cards, but it's statistically foolish. Given the high number of suspects, the rational choice leans heavily towards rejecting to prevent a guaranteed loss, despite the strategic cost.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "The team contains 2 SUSPECT players, making mission failure highly probable. As a Resistance player on the team, approving would likely lead to a failed mission, accelerating the spies' victory. Rejecting avoids this near-certain failure, even though it risks wasting a turn.",
+                        "APPROVE": "UNLIKELY",
+                        "REJECT": "LIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 2 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 4 players. 1 or more Fail cards make the mission fail.\n- This resistance player is on the team: yes. This resistance player proposed this team: yes.\n- How trustworthy the players on the team other than this resistance player look: 2 SUSPECT, 1 UNSURE, 0 TRUSTED.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "This resistance player proposed the team, so they likely believe it's a good mix, but the team has 2 SUSPECT players which is very risky. With 0 successes and 2 failures already, the resistance is in a losing position and needs this mission to succeed. Approving the team gives a chance at a success despite the high risk, while rejecting it guarantees the spies win immediately since it's the last allowed team.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "Rejecting the team would immediately trigger the spies' win condition since it's the last allowed team. Approving is the only way to attempt a win, despite the high risk of the 2 SUSPECT players.",
+                        "APPROVE": "LIKELY",
+                        "REJECT": "UNLIKELY",
+                        "confidence": "HIGH"
+                    }
+                },
+                {
+                    "question": "Situation to rate:\n- Current Score: 0 missions succeeded, 2 failed. 3 successes win for the Resistance, 3 failures for the Spies.\n- The mission team has 4 players. 1 or more Fail cards make the mission fail.\n- This resistance player is on the team: yes. This resistance player proposed this team: no.\n- How trustworthy the players on the team other than this resistance player look: 3 SUSPECT, 0 UNSURE, 0 TRUSTED.\n- Options: APPROVE, REJECT\nRate each option (LIKELY / NEUTRAL / UNLIKELY), then give one overall confidence.",
+                    "cot_analysis": "The team contains 3 SUSPECT players, which is a very high risk for mission failure since spies likely control them. As a Resistance player on the team, I would want to avoid this mission failing, but the team composition is terrible. However, rejecting a team with 3 suspicious players might also signal to spies that I know something, or it might be a trap. Given the high number of suspects, the mission is almost guaranteed to fail, so rejecting might be a strategic move to avoid wasting a turn or to disrupt the spies' plan. But wait, if I reject, the spies might just propose a different team. Actually, the best move is to approve because the spies might be trying to get me on the team, and if I reject, they might propose a team without me. But if I approve, I am on the team and likely to fail. This is a tough call. But given the high number of suspects, the mission is likely to fail, so rejecting might be better. However, if I reject, the spies might just propose a different team, and I might not be on it. But if I approve, I am on the team and likely to fail. So, rejecting is better. But wait, if I reject, the spies might just propose a different team, and I might not be on it. But if I approve, I am on the team and likely to fail. So, rejecting is better. But wait, if I reject, the spies might just propose a different team, and I might not be on it. But if I approve, I am on the team and likely to fail. So, rejecting is better. But wait, if I reject, the spies might just propose a different team, and I might not be on it. But if I approve, I am on the team and likely to fail. So, rejecting is better. But wait, if I reject, the spies might just propose a different team, and I might not be on it. But if I approve, I am on the team and likely to fail. So, rejecting is better. But wait, if I reject, the spies might just propose a different team, and I might not be on it. But if I approve, I am on the team and likely to fail. So, rejecting is better.",
+                    "thinking": null,
+                    "answer": {
+                        "reasoning": "The team contains 3 SUSPECT players, making mission failure almost certain. As a Resistance player on the team, approving would waste a turn and contribute to the spy victory condition (3 failures), so rejecting is the rational choice to avoid failure.",
+                        "APPROVE": "UNLIKELY",
+                        "REJECT": "LIKELY",
+                        "confidence": "HIGH"
+                    }
+                }
+            ]
+        },
+        "3": {
+            "decisions": [
+                {
+                    "phase": "team_vote",
+                    "spy_suspects": [],
+                    "reasoning_summary": "This is the first proposal with no historical data, so I cannot identify specific spies yet. Player 4, as the leader, could be a spy trying to get a teammate on the mission or a resistance player building a team. Since I have no reason to distrust Player 2 or Player 5 specifically, and rejecting the team without cause would only benefit the spies by delaying progress, I will approve this team to see the mission result.",
+                    "cot_analysis": "This is the very first proposal of the game, so there is no historical data on player behavior or voting patterns to analyze. Since Player 4 is the leader proposing this team, they could be a spy trying to get a teammate on the mission, or a resistance player trying to build a team. With no prior information, I cannot identify any specific players as likely spies yet. My vote should ideally be based on trust or a strategy to eliminate potential spies later, but currently all players are equally unknown. I need to consider that a tie vote rejects the team, which benefits the spies if they are trying to delay the game."
+                },
+                {
+                    "phase": "team_vote",
+                    "spy_suspects": [
+                        4,
+                        5
+                    ],
+                    "reasoning_summary": "Mission 1 failed despite unanimous approval, indicating a spy was likely on that team or a resistance player played a Fail card. Player 4 proposed the failed team, and now Player 5 is proposing a team including Player 4 and themselves, which is suspicious as spies might try to group together. However, rejecting teams without clear evidence helps the spies by stalling progress toward the 3 mission wins needed for Resistance victory. I need to weigh the risk of a spy team against the risk of losing time by rejecting a potentially safe team. Given the current state, I will approve this team to see the mission result.",
+                    "cot_analysis": "Mission 1 failed despite unanimous approval, suggesting a spy was on that team or a resistance player played a Fail card. Since Player 4 proposed the failed team and everyone approved it, Player 4 could be a spy trying to get a teammate on the mission, or a resistance player who misjudged the team. Player 5 is now proposing a team including themselves and Player 4, who was the previous leader; this pairing is suspicious as spies might try to group together. However, rejecting teams without clear evidence helps the spies by stalling progress toward the 3 mission wins needed for Resistance victory. I need to weigh the risk of a spy team against the risk of losing time by rejecting a potentially safe team."
+                },
+                {
+                    "phase": "team_vote",
+                    "spy_suspects": [
+                        2,
+                        5
+                    ],
+                    "reasoning_summary": "Mission 1 failed with Player 2 and Player 5. Mission 2 failed with Player 2, Player 4, and Player 5. Player 2 was on both failed missions and rejected Mission 2, which is suspicious behavior for a spy trying to avoid suspicion, or a resistance player trying to block a spy team. Player 0, as the leader, proposed a team including Player 2, who has a history of being on failed missions. Given the spies need to succeed, and Player 2 has been on two failed missions, including them in a new team is risky. Rejecting the team might help the spies stall, but the risk of another failure with Player 2 is high. Therefore, I should reject this team to avoid another failure.",
+                    "cot_analysis": "Mission 1 failed with a team of Player 2 and Player 5, both of whom voted to approve. Since the mission failed, at least one of them is likely a spy, or a resistance player played a Fail card. Mission 2 also failed with a team including Player 2, Player 4, and Player 5. Player 2 rejected this team, which is interesting as they were part of the previous failed mission. Player 4 proposed the first failed team and is now on the second failed team. Player 0 is proposing a team of themselves, Player 1, Player 2, and Player 3. Since Player 2 was on both failed missions and rejected the second team, they might be a spy trying to avoid suspicion, or a resistance player. However, the team proposed by Player 0 includes Player 2, who has a history of being on failed missions. Given the spies need to succeed, and Player 2 has been on two failed missions, including them in a new team is risky. But rejecting the team without strong evidence might help the spies stall. I need to consider that Player 0, as the leader, might be a spy trying to get a team through. However, Player 1 is also on this team and has no history of being on a failed mission. The risk of including Player 2, who has been on two failed missions, is high. Therefore, I should reject this team to avoid another failure."
+                },
+                {
+                    "phase": "team_vote",
+                    "spy_suspects": [
+                        2,
+                        5
+                    ],
+                    "reasoning_summary": "Player 2 was on both failed missions and rejected Mission 2, which is suspicious behavior. Player 5 proposed the second failed mission and is now on the current team. Including both players with a history of failure increases the risk of another failure. Since the spies win if 3 missions fail, I should reject this team to avoid another failure.",
+                    "cot_analysis": "Player 2 was on both failed missions and rejected the second one, suggesting they might be a spy trying to avoid suspicion or a resistance player blocking a spy team. Player 5 proposed the second failed mission and is now on the current team, making them a potential spy. The current team includes Player 2 and Player 5, both of whom have been involved in failures, increasing the risk of another failure. Since the spies win if 3 missions fail, including players with a history of failure is dangerous for the Resistance. I should reject this team to avoid another failure and potentially eliminate a spy from the game."
+                },
+                {
+                    "phase": "done",
+                    "spy_suspects": [
+                        2,
+                        5
+                    ],
+                    "reasoning_summary": "Player 2 was on both failed missions and yet voted to reject Mission 2, which is highly suspicious behavior for a spy trying to sabotage the Resistance. Player 5 proposed the second failed mission and is now on another failed team, showing a pattern of involvement in failures. Since the Resistance needs 3 successes and we have 3 failures already, the spies likely coordinated to ensure these outcomes. The fact that all players approved Mission 1 suggests the spies might have been playing Resistance cards there, or the failure was due to a spy on that specific team. Given the voting patterns, Players 2 and 5 are the most likely spies.",
+                    "cot_analysis": "Player 2 is highly suspicious because they were on both failed missions and yet voted to reject Mission 2, a behavior consistent with a spy trying to sabotage the Resistance. Player 5 also proposed a failed mission and is now on another failed team, showing a pattern of involvement in failures. Since the Resistance needs 3 successes and we have 3 failures already, the spies likely coordinated to ensure these outcomes. The fact that all players approved Mission 1 suggests the spies might have been playing Resistance cards there, or the failure was due to a spy on that specific team. Given the voting patterns, Players 2 and 5 are the most likely spies."
+                }
+            ],
+            "summary_iterations": [
+                "This is the first proposal with no historical data, so I cannot identify specific spies yet. Player 4, as the leader, could be a spy trying to get a teammate on the mission or a resistance player building a team. Since I have no reason to distrust Player 2 or Player 5 specifically, and rejecting the team without cause would only benefit the spies by delaying progress, I will approve this team to see the mission result.",
+                "Mission 1 failed despite unanimous approval, indicating a spy was likely on that team or a resistance player played a Fail card. Player 4 proposed the failed team, and now Player 5 is proposing a team including Player 4 and themselves, which is suspicious as spies might try to group together. However, rejecting teams without clear evidence helps the spies by stalling progress toward the 3 mission wins needed for Resistance victory. I need to weigh the risk of a spy team against the risk of losing time by rejecting a potentially safe team. Given the current state, I will approve this team to see the mission result.",
+                "Mission 1 failed with Player 2 and Player 5. Mission 2 failed with Player 2, Player 4, and Player 5. Player 2 was on both failed missions and rejected Mission 2, which is suspicious behavior for a spy trying to avoid suspicion, or a resistance player trying to block a spy team. Player 0, as the leader, proposed a team including Player 2, who has a history of being on failed missions. Given the spies need to succeed, and Player 2 has been on two failed missions, including them in a new team is risky. Rejecting the team might help the spies stall, but the risk of another failure with Player 2 is high. Therefore, I should reject this team to avoid another failure.",
+                "Player 2 was on both failed missions and rejected Mission 2, which is suspicious behavior. Player 5 proposed the second failed mission and is now on the current team. Including both players with a history of failure increases the risk of another failure. Since the spies win if 3 missions fail, I should reject this team to avoid another failure.",
+                "Player 2 was on both failed missions and yet voted to reject Mission 2, which is highly suspicious behavior for a spy trying to sabotage the Resistance. Player 5 proposed the second failed mission and is now on another failed team, showing a pattern of involvement in failures. Since the Resistance needs 3 successes and we have 3 failures already, the spies likely coordinated to ensure these outcomes. The fact that all players approved Mission 1 suggests the spies might have been playing Resistance cards there, or the failure was due to a spy on that specific team. Given the voting patterns, Players 2 and 5 are the most likely spies."
+            ]
+        }
+    }
+}

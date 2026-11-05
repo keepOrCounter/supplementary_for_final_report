@@ -1,0 +1,619 @@
+{
+    "game_index": 4,
+    "seed": 915006,
+    "crashed": false,
+    "crash_reason": "",
+    "duration_seconds": 82.81595015525818,
+    "num_players": 6,
+    "spies": [
+        0,
+        1
+    ],
+    "agents": {
+        "0": "AblationResistanceAgent(llm/llm/llm)",
+        "1": "AblationResistanceAgent(eu/eu/eu)",
+        "2": "AblationResistanceAgent(eu/eu/eu)",
+        "3": "RandomResistanceAgent",
+        "4": "RandomResistanceAgent",
+        "5": "GrailResistanceAgent"
+    },
+    "winner": "resistance",
+    "win_reason": "3 missions succeeded",
+    "mission_successes": [
+        true,
+        true,
+        true
+    ],
+    "missions": [
+        {
+            "mission_index": 0,
+            "proposed_by": 2,
+            "mission_team": [
+                2,
+                3
+            ],
+            "votes_on_team": {
+                "0": true,
+                "1": false,
+                "2": true,
+                "3": false,
+                "4": true,
+                "5": true
+            },
+            "rejected_proposals": [
+                {
+                    "proposed_by": 1,
+                    "proposed_team": [
+                        1,
+                        4
+                    ],
+                    "votes_on_team": {
+                        "0": true,
+                        "1": false,
+                        "2": true,
+                        "3": false,
+                        "4": false,
+                        "5": true
+                    }
+                }
+            ],
+            "mission_succeeded": true,
+            "fail_cards": null
+        },
+        {
+            "mission_index": 1,
+            "proposed_by": 3,
+            "mission_team": [
+                2,
+                3,
+                5
+            ],
+            "votes_on_team": {
+                "0": true,
+                "1": false,
+                "2": true,
+                "3": true,
+                "4": true,
+                "5": true
+            },
+            "rejected_proposals": [],
+            "mission_succeeded": true,
+            "fail_cards": null
+        },
+        {
+            "mission_index": 2,
+            "proposed_by": 4,
+            "mission_team": [
+                0,
+                2,
+                4,
+                5
+            ],
+            "votes_on_team": {
+                "0": true,
+                "1": true,
+                "2": false,
+                "3": true,
+                "4": true,
+                "5": false
+            },
+            "rejected_proposals": [],
+            "mission_succeeded": true,
+            "fail_cards": null
+        }
+    ],
+    "rejected_after_last_mission": [],
+    "beliefs": [
+        {
+            "player_id": 2,
+            "missions_seen": 0,
+            "spy_probability": {
+                "0": 0.3886627976920919,
+                "1": 0.40139837731469596,
+                "2": 0.0,
+                "3": 0.3886627976920919,
+                "4": 0.4326132296090285,
+                "5": 0.3886627976920919
+            }
+        },
+        {
+            "player_id": 5,
+            "missions_seen": 0,
+            "spy_probability": {
+                "0": 0.5,
+                "1": 0.5,
+                "2": 0.5,
+                "3": 0.5,
+                "4": 0.5,
+                "5": 0.0
+            }
+        },
+        {
+            "player_id": 2,
+            "missions_seen": 1,
+            "spy_probability": {
+                "0": 0.41521699619283425,
+                "1": 0.7244368224201863,
+                "2": 0.0,
+                "3": 0.10072938783608765,
+                "4": 0.33036408576443427,
+                "5": 0.4292527077864575
+            }
+        },
+        {
+            "player_id": 5,
+            "missions_seen": 1,
+            "spy_probability": {
+                "0": 0.5005751252174377,
+                "1": 0.5332456231117249,
+                "2": 0.4616442322731018,
+                "3": 0.4650672376155853,
+                "4": 0.49942487478256226,
+                "5": 0.0
+            }
+        },
+        {
+            "player_id": 2,
+            "missions_seen": 2,
+            "spy_probability": {
+                "0": 0.6531861685335018,
+                "1": 0.8732033493023797,
+                "2": 0.0,
+                "3": 0.043246222434463674,
+                "4": 0.30935164090671025,
+                "5": 0.1210126188229447
+            }
+        },
+        {
+            "player_id": 5,
+            "missions_seen": 2,
+            "spy_probability": {
+                "0": 0.48866233229637146,
+                "1": 0.5602865219116211,
+                "2": 0.2400401532649994,
+                "3": 0.2535191774368286,
+                "4": 0.5113376379013062,
+                "5": 0.0
+            }
+        },
+        {
+            "player_id": 2,
+            "missions_seen": 3,
+            "spy_probability": {
+                "0": 0.6873629178391037,
+                "1": 0.8109028609270319,
+                "2": 0.0,
+                "3": 0.03365491397034919,
+                "4": 0.34786118637135255,
+                "5": 0.1202181208921623
+            }
+        },
+        {
+            "player_id": 5,
+            "missions_seen": 3,
+            "spy_probability": {
+                "0": 0.09481211751699448,
+                "1": 0.9584805965423584,
+                "2": 0.0746171623468399,
+                "3": 0.8838396072387695,
+                "4": 0.11616036295890808,
+                "5": 0.0
+            }
+        }
+    ],
+    "identity_accuracy": 0.8,
+    "identity_missions_seen": 3,
+    "actions": [
+        {
+            "player_id": 1,
+            "phase": "propose",
+            "action": {
+                "type": "propose_team",
+                "team": [
+                    1,
+                    4
+                ]
+            }
+        },
+        {
+            "player_id": 1,
+            "phase": "propose",
+            "action": {
+                "type": "call_vote"
+            }
+        },
+        {
+            "player_id": 0,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 1,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": false
+            }
+        },
+        {
+            "player_id": 2,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 3,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": false
+            }
+        },
+        {
+            "player_id": 4,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": false
+            }
+        },
+        {
+            "player_id": 5,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 2,
+            "phase": "propose",
+            "action": {
+                "type": "propose_team",
+                "team": [
+                    2,
+                    3
+                ]
+            }
+        },
+        {
+            "player_id": 2,
+            "phase": "propose",
+            "action": {
+                "type": "call_vote"
+            }
+        },
+        {
+            "player_id": 0,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 1,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": false
+            }
+        },
+        {
+            "player_id": 2,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 3,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": false
+            }
+        },
+        {
+            "player_id": 4,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 5,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 2,
+            "phase": "mission_vote",
+            "action": {
+                "type": "mission_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 3,
+            "phase": "mission_vote",
+            "action": {
+                "type": "mission_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 3,
+            "phase": "propose",
+            "action": {
+                "type": "propose_team",
+                "team": [
+                    2,
+                    3,
+                    5
+                ]
+            }
+        },
+        {
+            "player_id": 3,
+            "phase": "propose",
+            "action": {
+                "type": "call_vote"
+            }
+        },
+        {
+            "player_id": 0,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 1,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": false
+            }
+        },
+        {
+            "player_id": 2,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 3,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 4,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 5,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 2,
+            "phase": "mission_vote",
+            "action": {
+                "type": "mission_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 3,
+            "phase": "mission_vote",
+            "action": {
+                "type": "mission_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 5,
+            "phase": "mission_vote",
+            "action": {
+                "type": "mission_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 4,
+            "phase": "propose",
+            "action": {
+                "type": "propose_team",
+                "team": [
+                    0,
+                    2,
+                    4,
+                    5
+                ]
+            }
+        },
+        {
+            "player_id": 4,
+            "phase": "propose",
+            "action": {
+                "type": "call_vote"
+            }
+        },
+        {
+            "player_id": 0,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 1,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 2,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": false
+            }
+        },
+        {
+            "player_id": 3,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 4,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 5,
+            "phase": "team_vote",
+            "action": {
+                "type": "team_vote",
+                "vote": false
+            }
+        },
+        {
+            "player_id": 0,
+            "phase": "mission_vote",
+            "action": {
+                "type": "mission_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 2,
+            "phase": "mission_vote",
+            "action": {
+                "type": "mission_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 4,
+            "phase": "mission_vote",
+            "action": {
+                "type": "mission_vote",
+                "vote": true
+            }
+        },
+        {
+            "player_id": 5,
+            "phase": "mission_vote",
+            "action": {
+                "type": "mission_vote",
+                "vote": true
+            }
+        }
+    ],
+    "llm_stats": {
+        "per_agent": {
+            "0": {
+                "total_calls": 10,
+                "retry_count": 0,
+                "total_prompt_tokens": 13070,
+                "total_completion_tokens": 1825,
+                "total_tokens": 14895,
+                "token_tracking_complete": true
+            }
+        },
+        "game_total": {
+            "total_calls": 10,
+            "retry_count": 0,
+            "total_prompt_tokens": 13070,
+            "total_completion_tokens": 1825,
+            "total_tokens": 14895,
+            "token_tracking_complete": true
+        }
+    },
+    "reasoning": {
+        "0": {
+            "decisions": [
+                {
+                    "phase": "team_vote",
+                    "spy_suspects": [],
+                    "reasoning_summary": "Player 1, a spy, proposed a team with Player 4. As an ally, I should support this mission to increase our chances of failure. Approving avoids immediate suspicion from resistance players who might think Player 1 is acting suspiciously by proposing a team with only 2 players. If Player 4 is a spy, this mission will likely fail, helping us win. If Player 4 is resistance, we lose a chance but maintain cover.",
+                    "cot_analysis": "Player 1, who is a spy, proposed a team including themselves and Player 4. As a spy, Player 1 wants the mission to fail, so they would only propose this team if they believe Player 4 is also a spy or a weak resistance player. Since I am a spy and Player 1 is my ally, I should coordinate with them. However, the resistance players might suspect Player 4 is a spy if Player 1 proposes them. I need to consider if this team is likely to succeed or fail. If it fails, the resistance will scrutinize Player 4. If it succeeds, we lose a chance. Given that Player 1 is a spy, they likely know Player 4's faction. I should probably approve to avoid suspicion, but only if I think Player 4 is resistance. If Player 4 is a spy, I should reject to make it fail. But I don't know Player 4's faction. I need to think about the resistance's perspective. They might think Player 1 is a spy because they proposed a team with only 2 players, which is the minimum. But that's normal for mission 1. I should probably approve to avoid immediate suspicion, but I need to be careful."
+                },
+                {
+                    "phase": "team_vote",
+                    "spy_suspects": [
+                        4
+                    ],
+                    "reasoning_summary": "Player 1 (spy) proposed a team with Player 4, and both Player 1 and Player 4 voted to reject it. This suggests Player 4 might also be a spy, as they rejected their own ally's proposal, or they are a resistance player trying to sabotage a potential spy team. Player 2, the current leader, is proposing a team with Player 3. Since Player 2 is not a spy, I should consider whether including Player 3 is risky. If Player 3 is a spy, this mission could fail, which is good for us. However, if Player 3 is resistance, we might lose a chance. Given the previous rejection, I should be cautious but not overly suspicious of Player 2's proposal.",
+                    "cot_analysis": "Player 1 (a spy) proposed a team with Player 4, and both Player 1 and Player 4 voted to reject it. This suggests Player 4 might also be a spy, as they rejected their own ally's proposal, or they are a resistance player trying to sabotage a potential spy team. Player 2, the current leader, is proposing a team with Player 3. Since Player 2 is not a spy, I should consider whether including Player 3 is risky. If Player 3 is a spy, this mission could fail, which is good for us. However, if Player 3 is resistance, we might lose a chance. Given the previous rejection, I should be cautious but not overly suspicious of Player 2's proposal."
+                },
+                {
+                    "phase": "team_vote",
+                    "spy_suspects": [
+                        4
+                    ],
+                    "reasoning_summary": "Player 1 (spy) rejected their own proposal with Player 4, suggesting Player 4 is likely resistance trying to block a spy team. Player 2 (resistance) successfully led a mission with Player 3, indicating Player 3 is probably resistance as well. Now Player 3 proposes a team including Player 2 and Player 5. Since Player 3 is likely resistance, this team is likely safe, but I need to be careful not to reveal my spy identity. I should approve to avoid suspicion while waiting for a better opportunity to sabotage a future mission.",
+                    "cot_analysis": "Player 1 (spy) rejected their own proposal with Player 4, suggesting Player 4 is likely resistance trying to block a spy team. Player 2 (resistance) successfully led a mission with Player 3, indicating Player 3 is probably resistance as well. Now Player 3 proposes a team including Player 2 and Player 5. Since Player 3 is likely resistance, this team is likely safe, but I need to be careful not to reveal my spy identity. I should approve to avoid suspicion while waiting for a better opportunity to sabotage a future mission."
+                },
+                {
+                    "phase": "team_vote",
+                    "spy_suspects": [
+                        1
+                    ],
+                    "reasoning_summary": "I am a spy and need to sabotage missions without revealing myself. Player 1 (spy) previously rejected their own proposal with Player 4, suggesting Player 4 is likely resistance trying to block a spy team. Player 2 and Player 3 are likely resistance based on their successful missions. Player 4's proposed team includes Player 0, Player 2, Player 4, and Player 5. Since I am Player 0, I am on this team. I should approve to avoid suspicion while waiting for a better opportunity to sabotage a future mission when I can play a Fail card.",
+                    "cot_analysis": "Player 1 (spy) rejected their own proposal with Player 4, suggesting Player 4 is likely resistance trying to block a spy team. Player 2 (resistance) successfully led a mission with Player 3, indicating Player 3 is probably resistance as well. Player 4 now proposes a team including Player 0, Player 2, Player 4, and Player 5. Since Player 2 and Player 3 are likely resistance, and Player 4 is proposing a team, I need to be careful not to reveal my spy identity. Approving this team seems safe as it doesn't include obvious resistance players who might be suspicious. I should approve to avoid suspicion while waiting for a better opportunity to sabotage a future mission."
+                },
+                {
+                    "phase": "mission_vote",
+                    "spy_suspects": [
+                        2,
+                        5
+                    ],
+                    "reasoning_summary": "I am a spy and need to sabotage missions without revealing myself. Player 1 (spy) previously rejected their own proposal with Player 4, suggesting Player 4 is likely resistance trying to block a spy team. Player 2 and Player 3 are likely resistance based on their successful missions. Player 4's proposed team includes Player 0, Player 2, Player 4, and Player 5. Since I am Player 0, I am on this team. I should approve to avoid suspicion while waiting for a better opportunity to sabotage a future mission when I can play a Fail card.",
+                    "cot_analysis": "I am a spy on this mission team with Player 2, Player 4, and Player 5. Player 4 proposed this team, and Player 2 and Player 5 rejected it, which is suspicious as they might be resistance trying to block a spy team. However, Player 1 (the other spy) approved this team, suggesting they are coordinating with Player 4. Since I need to sabotage missions but avoid suspicion, I should play a Success card this time to keep the mission alive and avoid immediate scrutiny. This allows me to wait for a future mission where I can safely play a Fail card without being the obvious saboteur."
+                }
+            ],
+            "summary_iterations": [
+                "Player 1, a spy, proposed a team with Player 4. As an ally, I should support this mission to increase our chances of failure. Approving avoids immediate suspicion from resistance players who might think Player 1 is acting suspiciously by proposing a team with only 2 players. If Player 4 is a spy, this mission will likely fail, helping us win. If Player 4 is resistance, we lose a chance but maintain cover.",
+                "Player 1 (spy) proposed a team with Player 4, and both Player 1 and Player 4 voted to reject it. This suggests Player 4 might also be a spy, as they rejected their own ally's proposal, or they are a resistance player trying to sabotage a potential spy team. Player 2, the current leader, is proposing a team with Player 3. Since Player 2 is not a spy, I should consider whether including Player 3 is risky. If Player 3 is a spy, this mission could fail, which is good for us. However, if Player 3 is resistance, we might lose a chance. Given the previous rejection, I should be cautious but not overly suspicious of Player 2's proposal.",
+                "Player 1 (spy) rejected their own proposal with Player 4, suggesting Player 4 is likely resistance trying to block a spy team. Player 2 (resistance) successfully led a mission with Player 3, indicating Player 3 is probably resistance as well. Now Player 3 proposes a team including Player 2 and Player 5. Since Player 3 is likely resistance, this team is likely safe, but I need to be careful not to reveal my spy identity. I should approve to avoid suspicion while waiting for a better opportunity to sabotage a future mission.",
+                "I am a spy and need to sabotage missions without revealing myself. Player 1 (spy) previously rejected their own proposal with Player 4, suggesting Player 4 is likely resistance trying to block a spy team. Player 2 and Player 3 are likely resistance based on their successful missions. Player 4's proposed team includes Player 0, Player 2, Player 4, and Player 5. Since I am Player 0, I am on this team. I should approve to avoid suspicion while waiting for a better opportunity to sabotage a future mission when I can play a Fail card.",
+                "I am a spy and need to sabotage missions without revealing myself. Player 1 (spy) previously rejected their own proposal with Player 4, suggesting Player 4 is likely resistance trying to block a spy team. Player 2 and Player 3 are likely resistance based on their successful missions. Player 4's proposed team includes Player 0, Player 2, Player 4, and Player 5. Since I am Player 0, I am on this team. I should approve to avoid suspicion while waiting for a better opportunity to sabotage a future mission when I can play a Fail card."
+            ]
+        }
+    }
+}

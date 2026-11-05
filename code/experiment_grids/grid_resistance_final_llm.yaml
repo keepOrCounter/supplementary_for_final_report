@@ -1,0 +1,94 @@
+# the formal run, with our LLM likelihood agent in the tested seat
+#
+#   python3 batch_runner_resistance.py experiment_grids/grid_resistance_final_llm.yaml
+#
+# The same 180 games split into one file per trial, to run over several
+# sessions: experiment_grids/final_llm/ (see README.md at the archive root).
+#
+# grid_resistance_final.yaml with one change: seat 0 is our eu agent reading the
+# belief whose likelihoods an LLM judge gives (belief_model: llm) instead of
+# GRAIL. Every other line is the same, so the two runs share their seeds, their
+# seat rotation and the five other seats, and are compared game by game.
+#
+# The tested seat keeps faction: resistance. It has to: an eu spy needs the
+# strategic belief, so check_rules refuses this one a spy seat, as it refuses
+# GRAIL one. It is also what makes the arm comparable with GRAIL's.
+#
+# No hide_weight or spy_hide_budget, unlike the two strategic seats. The cost of
+# looking like a spy needs a model of how the table sees this player, and only
+# the strategic belief has one. So this seat pays no such cost, as GRAIL does
+# not, and check_rules refuses the two keys.
+#
+# judge_cot with judge_reasoning_effort none: the model's own thinking has no
+# length bound and the judge is asked about 83 questions a game (50 to 142,
+# measured on this line-up with a fake judge), two calls each with judge_cot on;
+# the reasoning pass of the manual chain of thought is bounded by its prompt.
+
+base:
+  game:
+    num_players: 6
+    num_games: 30
+    seed: 910001
+    print_out: false
+    enforce_resistance_must_pass: false
+    reveal_fail_count: false
+  agents:
+    seats:
+      - type: ablation
+        faction: resistance
+        propose_strategy: eu
+        team_vote_strategy: eu
+        mission_strategy: eu
+        belief_model: llm
+        info_weight: 0.5
+        adaptive_info_weight: true
+        judge_cot: true
+        judge_reasoning_effort: none
+      - type: ablation
+        propose_strategy: llm
+        team_vote_strategy: llm
+        mission_strategy: llm
+        decision_cot: true
+        decision_reasoning_effort: none
+        resistance_plays_success: true
+      - type: ablation
+        propose_strategy: eu
+        team_vote_strategy: eu
+        mission_strategy: eu
+        belief_model: strategic
+        info_weight: 0.5
+        adaptive_info_weight: true
+        hide_weight: 0.25
+        spy_hide_budget: 0.0
+      - type: ablation
+        propose_strategy: eu
+        team_vote_strategy: eu
+        mission_strategy: eu
+        belief_model: strategic
+        info_weight: 0.5
+        adaptive_info_weight: true
+        hide_weight: 0.25
+        spy_hide_budget: 0.0
+      - type: random
+        plays_success: true
+      - type: random
+        plays_success: true
+    rotate_seats: &id001
+    - 910001
+    - 911001
+    - 912001
+    - 913001
+    - 914001
+    - 915001
+  llm:
+    model: qwen3.5-9b-ctx12288:latest
+    base_url: http://localhost:11434/v1
+    api_key: ollama
+    max_retries: 3
+    temperature: 0.5
+    top_p: 0.9
+    max_tokens: 6144
+  logging:
+    output_dir: results/final_llm_mixed
+sweep:
+  game.seed: *id001

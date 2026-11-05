@@ -1,0 +1,50 @@
+best: &id001
+  combination: players=random-llm-random-llm-symbolic2
+  completed: 100
+  duration_seconds: 33444.6
+  failed: 0
+  lk_cache_hit_rate: 0.9993
+  lk_defaulted_slots: 0
+  lk_judge_calls: 637
+  lk_queries: 954291
+  llm_calls: 1484
+  llm_retries: 55
+  llm_total_tokens: 4543965
+  num_games: 100
+  other_wins: 21
+  params:
+    agents.players:
+    - type: random
+    - type: llm
+    - type: random
+    - type: llm
+    - type: symbolic
+    - type: symbolic
+  prince_accuracy: 0.58
+  princess_wins: 58
+  queen_wins: 21
+grid_config: experiment_grids/grid_nesy_llm_supplement.yaml
+results:
+- *id001
+- combination: players=symbolic1
+  completed: 100
+  duration_seconds: 23939.0
+  failed: 0
+  lk_cache_hit_rate: 0.9995
+  lk_defaulted_slots: 0
+  lk_judge_calls: 643
+  lk_queries: 1323138
+  llm_calls: 1343
+  llm_retries: 41
+  llm_total_tokens: 4171671
+  num_games: 100
+  other_wins: 47
+  params:
+    agents.players:
+    - type: symbolic1
+  prince_accuracy: 0.32
+  princess_wins: 32
+  queen_wins: 21
+total_combinations: 2
+total_duration_seconds: 57383.5
+total_games: 200

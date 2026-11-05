@@ -1,0 +1,83 @@
+# one trial of the formal LLM likelihood run: trial 4, seed 914001, 30 games
+#
+#   python3 batch_runner_resistance.py experiment_grids/final_llm/t4.yaml
+#
+# The whole run is experiment_grids/grid_resistance_final_llm.yaml. This file
+# is its trial 4 alone, so the six trials can be run one at a time: see
+# the README at the archive root. rotate_seats is the full list, so this trial keeps its
+# place in it and the tested agent sits at player id 4, as in the whole run.
+#
+# Every print is on, unlike the whole run: each action, each question the
+# likelihood judge is asked (seat 0) and each prompt the LLM baseline sends
+# (seat 1), with the answers. Printing changes no game.
+base:
+  game:
+    num_players: 6
+    num_games: 30
+    seed: 914001
+    print_out: true
+    enforce_resistance_must_pass: false
+    reveal_fail_count: false
+  agents:
+    seats:
+    - type: ablation
+      faction: resistance
+      propose_strategy: eu
+      team_vote_strategy: eu
+      mission_strategy: eu
+      belief_model: llm
+      info_weight: 0.5
+      adaptive_info_weight: true
+      judge_cot: true
+      judge_reasoning_effort: none
+      print_out: true
+    - type: ablation
+      propose_strategy: llm
+      team_vote_strategy: llm
+      mission_strategy: llm
+      decision_cot: true
+      decision_reasoning_effort: none
+      resistance_plays_success: true
+      print_out: true
+    - type: ablation
+      propose_strategy: eu
+      team_vote_strategy: eu
+      mission_strategy: eu
+      belief_model: strategic
+      info_weight: 0.5
+      adaptive_info_weight: true
+      hide_weight: 0.25
+      spy_hide_budget: 0.0
+    - type: ablation
+      propose_strategy: eu
+      team_vote_strategy: eu
+      mission_strategy: eu
+      belief_model: strategic
+      info_weight: 0.5
+      adaptive_info_weight: true
+      hide_weight: 0.25
+      spy_hide_budget: 0.0
+    - type: random
+      plays_success: true
+    - type: random
+      plays_success: true
+    rotate_seats:
+    - 910001
+    - 911001
+    - 912001
+    - 913001
+    - 914001
+    - 915001
+  llm:
+    model: qwen3.5-9b-ctx12288:latest
+    base_url: http://localhost:11434/v1
+    api_key: ollama
+    max_retries: 3
+    temperature: 0.5
+    top_p: 0.9
+    max_tokens: 6144
+  logging:
+    output_dir: results/final_llm_mixed/t4
+sweep:
+  game.seed:
+  - 914001

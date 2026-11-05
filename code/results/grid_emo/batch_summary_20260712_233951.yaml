@@ -1,0 +1,88 @@
+best: &id001
+  combination: players=random
+  completed: 99
+  duration_seconds: 43373.5
+  failed: 1
+  lk_cache_hit_rate: 0.0
+  lk_defaulted_slots: 0
+  lk_judge_calls: 0
+  lk_queries: 0
+  llm_calls: 7786
+  llm_retries: 143
+  llm_total_tokens: 13379179
+  num_games: 100
+  other_wins: 50
+  params:
+    agents.players:
+    - type: random
+  prince_accuracy: 0.404
+  princess_wins: 40
+  queen_wins: 9
+grid_config: experiment_grids/grid_emo.yaml
+results:
+- *id001
+- combination: players=symbolic
+  completed: 97
+  duration_seconds: 40052.7
+  failed: 3
+  lk_cache_hit_rate: 0.0
+  lk_defaulted_slots: 0
+  lk_judge_calls: 0
+  lk_queries: 0
+  llm_calls: 7723
+  llm_retries: 110
+  llm_total_tokens: 13105380
+  num_games: 100
+  other_wins: 65
+  params:
+    agents.players:
+    - type: symbolic
+  prince_accuracy: 0.1753
+  princess_wins: 17
+  queen_wins: 15
+- combination: players=llm
+  completed: 99
+  duration_seconds: 51097.8
+  failed: 1
+  lk_cache_hit_rate: 0.0
+  lk_defaulted_slots: 0
+  lk_judge_calls: 0
+  lk_queries: 0
+  llm_calls: 8226
+  llm_retries: 152
+  llm_total_tokens: 14389193
+  num_games: 100
+  other_wins: 46
+  params:
+    agents.players:
+    - type: llm
+  prince_accuracy: 0.3838
+  princess_wins: 38
+  queen_wins: 15
+- combination: players=random2-llm2-symbolic2
+  completed: 96
+  duration_seconds: 43932.5
+  failed: 4
+  lk_cache_hit_rate: 0.0
+  lk_defaulted_slots: 0
+  lk_judge_calls: 0
+  lk_queries: 0
+  llm_calls: 7837
+  llm_retries: 129
+  llm_total_tokens: 13501347
+  num_games: 100
+  other_wins: 48
+  params:
+    agents.players:
+    - type: random
+    - type: random
+    - type: llm
+    - type: llm
+    - type: symbolic
+    - type: symbolic
+  prince_accuracy: 0.3646
+  princess_wins: 35
+  queen_wins: 13
+total_combinations: 4
+total_duration_seconds: 178456.5
+total_games: 400

@@ -1,0 +1,61 @@
+best: &id001
+  combination: tom_beta=0.5
+  completed: 20
+  duration_seconds: 5391.3
+  failed: 0
+  lk_cache_hit_rate: 0.0
+  lk_defaulted_slots: 0
+  lk_judge_calls: 0
+  lk_queries: 0
+  llm_calls: 0
+  llm_retries: 0
+  llm_total_tokens: 0
+  num_games: 20
+  other_wins: 2
+  params:
+    agents.prince.ablation.tom_beta: 0.5
+  prince_accuracy: 0.55
+  princess_wins: 11
+  queen_wins: 7
+grid_config: experiment_grids/grid_tom.yaml
+results:
+- combination: tom_beta=0
+  completed: 20
+  duration_seconds: 5545.0
+  failed: 0
+  lk_cache_hit_rate: 0.0
+  lk_defaulted_slots: 0
+  lk_judge_calls: 0
+  lk_queries: 0
+  llm_calls: 0
+  llm_retries: 0
+  llm_total_tokens: 0
+  num_games: 20
+  other_wins: 4
+  params:
+    agents.prince.ablation.tom_beta: 0
+  prince_accuracy: 0.45
+  princess_wins: 9
+  queen_wins: 7
+- *id001
+- combination: tom_beta=1
+  completed: 20
+  duration_seconds: 5488.8
+  failed: 0
+  lk_cache_hit_rate: 0.0
+  lk_defaulted_slots: 0
+  lk_judge_calls: 0
+  lk_queries: 0
+  llm_calls: 0
+  llm_retries: 0
+  llm_total_tokens: 0
+  num_games: 20
+  other_wins: 2
+  params:
+    agents.prince.ablation.tom_beta: 1
+  prince_accuracy: 0.5
+  princess_wins: 10
+  queen_wins: 8
+total_combinations: 3
+total_duration_seconds: 16425.1
+total_games: 60

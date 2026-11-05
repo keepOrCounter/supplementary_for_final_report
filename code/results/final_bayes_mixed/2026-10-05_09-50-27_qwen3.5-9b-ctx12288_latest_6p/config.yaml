@@ -1,0 +1,71 @@
+agents:
+  rotate_seats:
+  - 910001
+  - 911001
+  - 912001
+  - 913001
+  - 914001
+  - 915001
+  seats:
+  - adaptive_info_weight: true
+    belief_model: bayes
+    faction: resistance
+    info_weight: 0.5
+    judge_cot: true
+    judge_reasoning_effort: none
+    mission_strategy: eu
+    propose_strategy: eu
+    strategic3:
+      adaptive_info_weight: true
+      hide_weight: 0.25
+      info_weight: 0.5
+      spy_hide_budget: 0.0
+    team_vote_strategy: eu
+    type: ablation
+  - decision_cot: true
+    decision_reasoning_effort: none
+    mission_strategy: llm
+    propose_strategy: llm
+    resistance_plays_success: true
+    team_vote_strategy: llm
+    type: ablation
+  - adaptive_info_weight: true
+    belief_model: strategic
+    hide_weight: 0.25
+    info_weight: 0.5
+    mission_strategy: eu
+    propose_strategy: eu
+    spy_hide_budget: 0.0
+    team_vote_strategy: eu
+    type: ablation
+  - adaptive_info_weight: true
+    belief_model: strategic
+    hide_weight: 0.25
+    info_weight: 0.5
+    mission_strategy: eu
+    propose_strategy: eu
+    spy_hide_budget: 0.0
+    team_vote_strategy: eu
+    type: ablation
+  - plays_success: true
+    type: random
+  - plays_success: true
+    type: random
+game:
+  enforce_resistance_must_pass: false
+  num_games: 30
+  num_players: 6
+  print_out: false
+  reveal_fail_count: false
+  seed: 915001
+llm:
+  api_key: ollama
+  base_url: http://localhost:11434/v1
+  max_retries: 3
+  max_tokens: 6144
+  model: qwen3.5-9b-ctx12288:latest
+  reasoning_effort: high
+  temperature: 0.5
+  top_p: 0.9
+logging:
+  output_dir: results/final_bayes_mixed

@@ -1,0 +1,26 @@
+agents:
+  players:
+  - type: symbolic1
+  prince:
+    type: llm
+  shuffle_opponents: false
+game:
+  num_games: 100
+  num_players: 7
+  print_out: true
+  seed: 65685
+  use_center_card: true
+llm:
+  api_key: ollama
+  base_url: http://localhost:11434/v1
+  max_retries: 3
+  max_tokens: 6144
+  model: qwen3.5-9b-ctx12288:latest
+  reasoning_effort: high
+  reasoning_history:
+    enabled: true
+  temperature: 0.5
+  top_p: 0.9
+logging:
+  enabled: true
+  output_dir: results/grid_llm_prince_fill

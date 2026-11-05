@@ -1,0 +1,134 @@
+# Experiment Config
+game:
+  num_players: 7
+  num_games: 10
+  seed: 760233 # base seed
+  print_out: true # print all game detail
+  use_center_card: true
+
+# Agent assignment
+# prince (player 0) is listed separately
+# non-prince players are filled in order from the "players" list
+# if fewer entries than needed, the last agent would be repeated to fill remaining slots
+
+agents:
+  prince:
+    type: ablation # random | human | llm | symbolic | soft_symbolic | ablation | grail | emo
+    # emo: EMO baseline (LLM-Based Explicit Models of Opponents, Yu et al. NAACL 2025):
+    # one atomic opponent model per player + central validator (bi-level feedback-
+    # refinement) + a CoT reasoning module. NEEDS the llm settings below; call-heavy.
+    emo:
+      self_refine_steps: 2   # S: self-feedback/refine iterations per opponent update (paper: 2)
+      global_refine_steps: 2 # G: validator global-feedback/refine iterations   (paper: 2)
+      model_reasoning_effort: none # thinking for opponent-model/validator sub-calls: none|low|medium|high
+      # paper runs CoT only for the final decision (which uses llm.reasoning_effort); "none" here is faithful + much faster
+      use_reasoning_history: true # EMO's OWN CoT reasoning-history toggle, INDEPENDENT of the LLM opponents
+    # grail: GRAIL-style baseline (max-product BP belief tracking + belief-greedy
+    # passive policy + optional LLM prior), ported from shahabrrad/Bayesian-Avalon.
+    grail:
+      use_llm_prior: true # true = inject GRAIL-style LLM "vibes" pseudo-priors before each BP inference
+      vibes_reasoning_effort: none # thinking for the 'vibes' prior sub-call only: none|low|medium|high
+      # "none" is faithful to the paper (Prompt E.7 "just return the JSON" + single-prompt efficiency) and
+      # avoids long-CoT generations being truncated by max_tokens -> retries; keeps GRAIL's LLM config off other agents
+      algorithm: max # max (max-product, GRAIL's choice) | sum (sum-product)
+      # factor_function: which factor encodes "observations -> roles" (analogue of GRAIL's NN factor)
+      #  uniform = uniform-derived answer likelihood (shared with symbolic Prince) [default]
+      #  likelihood = (B) learned P(answer|roles)   -> agents/grail/build_likelihood_codebook.py (.pkl)
+      #  posterior  = (A) learned P(role|history)   -> agents/grail/posterior_factor.py (.pt), GRAIL-faithful
+      factor_function: uniform
+      factor_function_path: null  # .pkl (likelihood) or .pt (posterior); required unless factor_function=uniform
+    # memory: cross-game opponent memory (our method). One store per experiment run:
+    # after every completed game the runner records each opponent's true role and
+    # their answers annotated with ground truth (post-game review), and the Prince
+    # consumes the RAW records in later games. Requires shuffle_opponents: false
+    # (memory is keyed by seat). Dumped to memory.json in the results dir.
+    memory:
+      enabled: false
+      window: 0 # render only each opponent's last K games in prompts (0 = all)
+      load_path: null # warm start: load a previous run's memory.json before game 1
+      # (recording continues on top; same opponents/seats assumed). Omit to start empty.
+      report: raw # what the Prince's prompts show per opponent:
+      #  raw = the ground-truth annotated game records [default]
+      #  profile = the LLM-written opponent profile (needs profile.enabled)
+      #  both = records + notes
+      profile:
+        enabled: false # update an LLM-written profile of each opponent after every game
+        # a failed update keeps the previous profile.
+        reasoning_effort: none # thinking for the profile-update sub-calls
+    ablation:
+      question_strategy: ig # ig | random | llm
+      guess_strategy: map # map | random | llm
+      # likelihood: answer model for the Bayesian belief update (MAP guess + belief context)
+      #  uniform = uniform answer likelihood (KripkeState, shared with symbolic Prince) [default]
+      #  llm = LLM-judged soft answer likelihood (NeuroSymbolicKripkeState); needs Ollama
+      #  strategic = 2nd-order ToM answer likelihood (StrategicKripkeState, exact model of symbolic1 players)
+      #  strategic3 = 3rd-order ToM answer likelihood (ThirdOrderKripkeState, exact model of symbolic players)
+      #  memory = per-opponent LLM judge conditioned on cross-game memory
+      #           (MemoryKripkeState); needs Ollama + memory.enabled: true
+      #  bayes = per-opponent Bayesian posterior over three answer models
+      #   (uniform = 0-order random, strategic3 = 2-order symbolic player, llm =
+      #   a generic LLM-style opponent scored by the memoryless judge), learned
+      #   across games from revealed roles (BayesKripkeState). The "llm" candidate
+      #   makes this arm need Ollama; needs memory.enabled: true
+      likelihood: strategic
+      bayes_adapt: mixture # mixture = posterior-weighted model averaging [default]
+      # | map = hard selection of the best-fitting type model
+      # | joint = belief over (role assignment, opponent profile). The profile belief
+      #   is updated after every answer, so predicting an opponent's next answer uses
+      #   what their earlier answers said about their profile. mixture holds that belief
+      #   fixed all game, which makes one opponent's answers independent. The two differ
+      #   only for an opponent asked twice in one game, i.e. the final-question target.
+      #   (only used when likelihood=bayes)
+      tom_smoothing: eps_greedy # softmax | eps_greedy: how strategic/strategic3 turn values into P(answer)
+      # tom_beta: 0.5 # quantal-response beta (only used when tom_smoothing=softmax)
+      tom_eps: 0.2 # opponent error rate (only used when tom_smoothing=eps_greedy); estimate via beta_mle.py
+      give_belief_state: true # give Kripke belief info to LLM (only used when strategy=llm)
+      give_history: true # give QA history to LLM (only used when strategy=llm)
+      give_memory: true # give cross-game memory to LLM prompts (only used when strategy=llm and memory.enabled)
+      belief_mode: distribution # distribution | worlds (only used when give_belief_state=true)
+      judge_reasoning_effort: none # thinking for the soft-likelihood judge sub-calls only
+      judge_cot: false # manual chain-of-thought for the judge (likelihood=llm/memory):
+      # split each judged situation into a reasoning + a rating (2 LLM calls
+      # per cache miss). Prompt-bounded CoT to use INSTEAD of native thinking: meant
+      # for judge_reasoning_effort: none, where a runaway thinking trace is impossible.
+    # soft_symbolic: hard constraint symbolic Prince + LLM soft likelihood, applied to Top-k IG.
+    soft_likelihood:
+      top_k: 3 # re-score only the top_k uniform-IG candidates with the soft IG
+      # Optional codebook overrides (defaults: 4/2/1 and 0.3/0.6/0.9):
+      # answer_weight: {LIKELY: 4, NEUTRAL: 2, UNLIKELY: 1}      # relative, normalised
+      # confidence_shrink: {LOW: 0.3, MEDIUM: 0.6, HIGH: 0.9}    # lambda in [0,1]
+
+  # shuffle_opponents: randomise which opponent config lands in which player seat,
+  # per game (reproducible from the game seed).
+  shuffle_opponents: false
+
+  # the last entry repeats if the list is shorter than the number of non-prince seats.
+  # player types: random | human | llm | symbolic (2nd-order ToM) | symbolic1 (1st-order ToM,
+  # best-responds to an order-0 logical Prince -- the opponent likelihood=strategic assumes)
+  players:
+    - type: symbolic
+    - type: symbolic
+    - type: symbolic
+    - type: symbolic
+    - type: symbolic
+    - type: symbolic
+
+
+# LLM settings (only used when type=llm exists)
+llm:
+  model: "qwen3.5-9b-ctx12288:latest" # to set num_ctx / repeat_penalty, use a Modelfile variant
+  base_url: "http://localhost:11434/v1"
+  api_key: "ollama"
+  max_retries: 3 # max retries for return parse errors
+  temperature: 0.5
+  top_p: 0.9
+  max_tokens: 6144 # equals to num_predict in ollama, caps output length
+  reasoning_effort: "high" # think: "none" = off, "low"/"medium"/"high" = on (qwen3.5 treats every non-none value as "on")
+
+  # Reasoning history: feed LLM's past thinking back into future prompts
+  reasoning_history:
+    enabled: true
+
+logging:
+  enabled: true
+  output_dir: "results"

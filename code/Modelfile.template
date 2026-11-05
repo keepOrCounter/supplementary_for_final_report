@@ -1,0 +1,22 @@
+# Modelfile template for baking Ollama params that the OpenAI-compatible
+# /v1 endpoint ignores (num_ctx, repeat_penalty).
+#
+# Why this exists:
+#   Ollama's /v1 endpoint silently drops extra_body options, so num_ctx and
+#   repeat_penalty cannot be set per-request from llm_client.py. Bake them into
+#   a model variant here, then use that variant as an experiment factor by
+#   setting `model:` in Config.yaml.
+#
+# Usage (one variant per experiment condition):
+#   1. Copy this file, edit the values below.
+#   2. Build it:
+#        ollama create qwen3.5-9b-ctx16384-rp1_2 -f Modelfile.template
+#   3. Point Config.yaml `model:` at the new name (e.g. qwen3.5-9b-ctx16384-rp1_2).
+#   4. Verify it took effect:  ollama ps   (CONTEXT column should match num_ctx)
+#
+# Tip: name variants after the params they bake (ctx<N>-rp<X>) so the model
+# name itself documents the condition.
+
+FROM qwen3.5:9b-q8_0
+
+PARAMETER num_ctx 12288 # context window; set >= your longest prompt + output headroom (default is only 4096!)

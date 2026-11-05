@@ -1,0 +1,186 @@
+# Resistance experiment config
+# Defaults reproduce GRAIL's environment, see docs/grail_parity.md.
+game:
+  num_players: 6
+  num_games: 5
+  seed: 760233 # base seed; game i uses seed + i + 1
+  print_out: true # prints every action; very chatty with a random agent
+
+  # Rule flags. Both False is GRAIL's engine, which is what we compare against.
+  # GRAIL runs under enforce_resistance_must_pass either way: its factors were
+  # trained on standard rules human games and its own resistance policy never
+  # plays Fail. reveal_fail_count True is refused, the state vector has nowhere
+  # to put the count. See agents/resistance/grail/UPSTREAM.md.
+  enforce_resistance_must_pass: false # True = rulebook, resistance may not play Fail
+  reveal_fail_count: false # True = rulebook, the number of Fail cards is public
+
+# Agents are listed per faction, so an agent can be pinned to one side. Within a
+# faction the entries are used in player id order; if there are fewer entries than
+# players on that side, the last entry repeats, the way the Tofu config does it. The
+# deal stays random, so a faction's agents hold different player ids from game to game.
+# grail is GRAIL's Graph Only ablation. It only has a resistance policy, so it
+# raises on a spy. One belief update takes about 15 seconds, so a game
+# with grail on all four resistance players runs for minutes, not milliseconds.
+# belief is our exact belief over the deals, carried by the random policy, so a
+# run of it plays the random baseline's games with our belief measured on them.
+# Resistance players only, like grail. It needs no Ollama and no torch. Its four
+# rates are an OPPONENT MODEL: see docs/opponent_models.md for every one of them
+# in this repository and where each lives.
+# ablation is the LLM baseline. It picks a strategy per decision, either faction,
+# and needs the llm block below because every llm strategy is an LLM call.
+# Any key other than "type" is passed to the agent, so an unknown key fails
+# loudly. grail takes algorithm: max | sum, upstream asks for max.
+# A switch named after a faction reads the agent's own card and only fires on
+# that faction's seats, so resistance_plays_success on a spies entry, or
+# spies_play_fail on a resistance entry, is accepted and never does anything.
+agents:
+  resistance: # 4 players in a 6 player game
+    - type: grail # random | grail | ablation | belief
+    # Our exact belief over the deals, on the random baseline's policy. Every
+    # setting below is its default; they are spelled out because the four rates
+    # are the opponent model and a run should say which one it used.
+    - type: belief # random | grail | ablation | belief
+      spy_fail_rate: 0.8 # a spy on a mission plays the Fail card
+      resistance_fail_rate: 0 # a resistance player on a mission plays the Fail card
+      spy_approves_spy_team: 0.8 # a spy approves a team that carries at least one spy
+      spy_steers_its_team: 0.8 # a spy leader aims its team at a spy rather than picking uniformly
+      # Against a RANDOM line-up set these two to false. Random players do not
+      # behave the way any rate above says, and reading a channel with the wrong
+      # model is worse than not reading it: 65.8% falls to 58.5%, measured. Off
+      # also leaves the mission result alone, which is the evidence GRAIL reads.
+      read_votes: true # read how everyone voted on each team
+      read_proposals: true # read which team each leader put forward
+    # Our method. eu keeps a belief over the deals and scores an action by what
+    # it is worth two steps out plus what it would teach, so info_weight 0 is a
+    # greedy belief consumer (the baseline) and above 0 it pays win probability
+    # for information. Either side, but a spy needs belief_model: strategic,
+    # which is the rung that prices a spy's actions; see the spies block below.
+    - type: ablation
+      propose_strategy: eu # random | llm | eu
+      team_vote_strategy: eu
+      mission_strategy: eu
+      belief_model: strategic # uniform | strategic | llm | bayes, see docs/opponent_models.md
+      # bayes learns each other player's type across games, so it needs agents.seats, not this
+      # faction list: see experiment_grids/grid_resistance_final_bayes.yaml
+      info_weight: 0.5 # 0 is greedy, which is the baseline this is read against
+      adaptive_info_weight: true # scale it by 1 - swing(score); OFF by default
+      # What one unit of the table's suspicion costs, in missions. THE ONE
+      # PARAMETER OF THIS METHOD THAT IS NOT DERIVED: the payoff term is priced
+      # in missions and being suspected is a state that lasts to the end of the
+      # game, and converting between the two needs a lookahead over the belief
+      # itself, which nothing here does. Spelled out because it is swept, and a
+      # run should say which value produced it. Past about 1.0 a spy starts
+      # voting its own teams down.
+      hide_weight: 0.5
+      # The most value, in missions, a modelled spy gives up to keep the table
+      # guessing. 0 is the spy every measurement so far was taken against.
+      spy_hide_budget: 0.0
+      # mission_success, the one input the value table takes, is deliberately NOT
+      # here. Left out it is read off the belief every turn, which is what "a
+      # mission with no team chosen yet" means and what the belief has an opinion
+      # about. Pinning it pins the AGENT only: the belief's model of every other
+      # player reads its own shadow either way, so a pinned cell hands the agent
+      # and its opponent model two different value tables. Sweep it in the grid,
+      # where that is the thing being measured, not here.
+      # How much of the opponent model is conceded to be wrong: it bounds what
+      # one observation can be worth. Off by default, and left off here, because
+      # it was added to answer a mismatched opponent and measurement says it does
+      # not - it costs the belief a few points at every setting and leaves the
+      # win rate inside the noise. Turn it on for a model sharp enough to rule a
+      # world out: a large beta, or an opponent this code cannot predict, such as
+      # an LLM spy. See the constant in kripke.py for the table.
+      model_epsilon: 0.0
+      # With belief_model: llm, uncomment these two. Other belief models refuse them.
+      # judge_reasoning_effort: none # the model's own thinking on judge calls, off
+      # judge_cot: true # a reasoning pass before every rating pass, two calls a question
+    # The LLM baseline. Every llm strategy below is an LLM call, so this needs
+    # Ollama running. Comment it out and uncomment grail to run that instead;
+    # leaving both uncommented is a mixed line-up, not a swap.
+    - type: ablation # random | grail | ablation | belief
+      propose_strategy: llm # random | llm, which players to send on the mission
+      team_vote_strategy: llm # random | llm, approve or reject the proposed team
+      mission_strategy: llm # random | llm, play the Success or the Fail card
+      use_reasoning_history: true # feed the agent's own running summary back in
+      # Manual chain of thought: split every decision into a reasoning pass and a
+      # decision pass, 2 LLM calls instead of 1. Pair it with
+      # decision_reasoning_effort: none just below. The reasoning is then
+      # bounded by what the prompt asks for, while the model's own thinking has
+      # no bound and a trace that reaches
+      # max_tokens returns no decision at all and costs the whole game. Tofu
+      # Kingdom's judge uses the same two pass shape (ablation.judge_cot).
+      decision_cot: true
+      # The model's own thinking on this agent's calls. It belongs to the agent
+      # and not to the llm block, so one line-up can hold an agent with the
+      # thinking off next to an agent with it on.
+      #   none  (the string) switches the thinking off
+      #   null  (YAML's empty value) is NOT the same: it leaves
+      #         llm.reasoning_effort below in force, which is "high"
+      # Manual CoT is only bounded with the thinking off, so decision_cot: true
+      # is refused while this is null, rather than run with the thinking on.
+      decision_reasoning_effort: none # none | low | medium | high, the agent's own thinking on its calls
+      # A resistance player plays Success without asking, whatever
+      # mission_strategy says. A Fail card only helps the spies, and an llm
+      # resistance player played Fail once over 81 measured cards, so this buys
+      # back about 70% of the mission card calls. It is this agent's policy and
+      # not a rule, so the environment still offers both cards and grail and
+      # random play on unchanged.
+      resistance_plays_success: true # the simplified game: a resistance player never plays Fail
+      # A resistance player approves the last team a mission allows without
+      # asking. Rejecting it hands the game to the spies there and then, so
+      # approving is never worse. GRAIL's agent overrides its own policy the
+      # same way, so turning this on is what makes the two comparable on that
+      # ending. The resistance side only: a spy rejecting it wins the game.
+      resistance_approves_last_team: false
+      # A spy plays the Fail card without asking, whatever mission_strategy
+      # says. The spy side's half of resistance_plays_success, and what makes a
+      # floor symmetric: a random spy plays Success about half the time, which
+      # loses the spies the game the way a random resistance player playing Fail
+      # loses it for the resistance. It takes away a real decision though, since
+      # a spy that plays Success hides, so turn it on for a floor and read an
+      # llm cell that has it on as a different agent, not a cheaper one.
+      spies_play_fail: false
+      print_out: false # prints every prompt and answer, very long
+  spies: # 2 players in a 6 player game
+  # A random resistance player plays Fail half the time, which leaves the mission
+  # outcome carrying no information about the deal at all. GRAIL's own resistance
+  # seat never does, so set plays_success on the random baseline before comparing
+  # any belief model against it:
+    - type: random # random | ablation
+      plays_success: true
+    # The ToM spy, which is the opponent model applied to itself: best_vote,
+    # best_team and best_card DRAW from the same likelihoods the resistance side
+    # is reading, they do not take their argmax. Swap it in for the random spy
+    # above to get an opponent the belief describes to within one rung: a spy
+    # decides on its own rung and the table models it one below, as it models
+    # every other seat. It is self play, so report it as that and not as a win
+    # rate against a baseline.
+    - type: ablation
+      propose_strategy: eu
+      team_vote_strategy: eu
+      mission_strategy: eu
+      belief_model: strategic # required on a spy seat: uniform has no spy policy
+      # A spy draws its own actions from the model rather than maximising, so it
+      # never spends info_weight itself. Its MODEL of the resistance does: the
+      # belief carries the policy of whoever it describes, so leaving this off
+      # makes the spy read every vote at the table as a greedy player's.
+      info_weight: 0.5
+      adaptive_info_weight: true
+      hide_weight: 0.5 # as above, and the same number the resistance seat uses
+      spy_hide_budget: 0.0 # what this spy will pay to look innocent
+
+
+# Needed only by agents whose needs_llm is True (ablation). Same block as
+# Config.yaml, which runs Tofu Kingdom; the two share core/llm_client.py.
+llm:
+  model: "qwen3.5-9b-ctx12288:latest" # to set num_ctx, use a Modelfile variant
+  base_url: "http://localhost:11434/v1"
+  api_key: "ollama"
+  max_retries: 3 # an answer the response model refuses is retried this many times
+  temperature: 0.5
+  top_p: 0.9
+  max_tokens: 6144 # output cap, equals num_predict in ollama. Thinking counts
+  # towards it, and the prompt plus the output has to fit the model variant's num_ctx.
+  reasoning_effort: "high" # think: "none" = off, "low"/"medium"/"high" = on (qwen3.5 treats every non-none value as "on")
+
+logging:
+  output_dir: results

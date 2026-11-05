@@ -1,0 +1,250 @@
+# ═══════════════════════════════════════════════════════════════════════════
+#  Reference experiment grid — every parameter, documented
+# ═══════════════════════════════════════════════════════════════════════════
+#
+# This file is the worked example of the grid format. It lists EVERY supported
+# parameter, including ones the configuration below never reads, so it can be
+# used as the reference for what may appear in a config. Blocks belonging to an
+# agent type other than the selected one are simply ignored — nothing here is
+# harmful to leave in place.
+#
+#   python3 batch_runner.py experiment_grid.yaml --dry-run   # list combinations
+#   python3 batch_runner.py experiment_grid.yaml             # run them
+#
+# A grid has exactly two top-level keys:
+#
+#   base:   one complete game config — the same schema as Config.yaml, which is
+#           what `python3 main.py <config.yaml>` consumes directly.
+#   sweep:  the factors to vary. Keys are DOTTED PATHS into `base`, each holding
+#           a list of values. The runner takes the Cartesian product of those
+#           lists and, for each combination, copies `base` and overrides the
+#           named paths. Omit `sweep` (or leave it empty) to run `base` once.
+#
+# `num_games` is per COMBINATION, so total games = num_games × (product of the
+# sweep list lengths). Check with --dry-run before launching.
+#
+# As written below: 2 × 2 = 4 combinations × 20 games = 80 games, needing no LLM
+# and about 20 s in total — it is meant to be run as-is. The reported experiments
+# use the 7-player protocol instead (see the cost note on `num_players`).
+
+
+base:
+
+  # ─── Game ────────────────────────────────────────────────────────────────
+  game:
+    num_players: 5        # 1 Prince + (num_players - 1) other seats.
+                          # 5 here only to keep this example fast. The reported
+                          # experiments use 7 + a center card, where the world
+                          # count grows from ~120 to ~5040 and an IG sweep with a
+                          # strategic likelihood costs ~283 s/game rather than
+                          # ~2 s. 7 + center is also REQUIRED whenever `symbolic1`
+                          # opponents appear: at 5 players without a center card
+                          # `symbolic1` and `symbolic` play identically, so the
+                          # `strategic` and `strategic3` models cannot be told
+                          # apart.
+    num_games: 20         # PER COMBINATION, not per grid
+    seed: 65685           # base seed; game g uses seed + g + 1, so runs sharing
+                          # this seed play identical deals in identical order
+                          # (common random numbers → paired comparisons)
+    print_out: false      # per-game transcript to stdout (--print_out forces on)
+    use_center_card: true # true = one role is face-down in the centre
+
+  # ─── Agents ──────────────────────────────────────────────────────────────
+  # Player 0 is always the Prince and is configured separately. The remaining
+  # seats are filled from `players` in order; if that list is shorter than the
+  # number of seats, its LAST entry repeats to fill the rest.
+  agents:
+
+    prince:
+      # random | human | llm | symbolic | soft_symbolic | ablation | grail | emo
+      # Only the block matching this type is read; the others are inert.
+      type: ablation
+
+      # ── ablation: our configurable Prince (the one used for the ablations) ──
+      ablation:
+        question_strategy: ig   # ig | random | llm
+                                #  ig     = maximise expected information gain
+                                #  random = uniform over legal questions
+                                #  llm    = the LLM picks (needs Ollama)
+        guess_strategy: map     # map | random | llm
+                                #  map    = argmax of the Kripke posterior
+        # likelihood: the opponent answer model driving the Bayesian belief
+        # update. It governs BOTH the MAP guess and the IG forward simulation,
+        # so question selection uses the same model.
+        #  uniform    = opponents answer uniformly at random (KripkeState)
+        #  strategic  = 2nd-order ToM; opponents best-respond to an order-0
+        #               logical Prince — the exact model of `symbolic1` players
+        #  strategic3 = 3rd-order ToM; opponents best-respond to a uniform
+        #               order-1 Prince — the exact model of `symbolic` players
+        #  llm        = LLM-judged soft likelihood (needs Ollama)
+        #  memory     = per-opponent LLM judge conditioned on cross-game memory
+        #               (needs Ollama + memory.enabled: true)
+        #  bayes      = per-opponent posterior over {uniform, strategic3, llm},
+        #               learned across games from revealed roles
+        #               (needs Ollama + memory.enabled: true)
+        likelihood: strategic
+
+        # How strategic/strategic3 turn action values into P(answer).
+        tom_smoothing: eps_greedy  # softmax | eps_greedy  (code default: softmax)
+        tom_eps: 0.2               # opponent error rate; eps_greedy only.
+                                   # Fit from logged games with beta_mle.py.
+        tom_beta: 128              # quantal-response inverse temperature;
+                                   # softmax only. Saturates — sweep on a log
+                                   # scale. 0 reproduces `uniform` exactly.
+
+        # likelihood: bayes only — how the type posterior is consumed.
+        bayes_adapt: mixture  # mixture | map | joint
+                              #  mixture = posterior-weighted model averaging
+                              #  map     = hard pick of the best-fitting type
+                              #  joint   = belief over (roles, opponent profile),
+                              #            updated after every answer
+
+        # LLM-context flags — read only by the `llm` question/guess strategies.
+        give_belief_state: true      # show the Kripke posterior in the prompt
+        give_history: true           # show the QA history in the prompt
+        give_memory: true            # show cross-game memory (needs memory.enabled)
+        belief_mode: distribution    # distribution | worlds
+                                     #  distribution = per-player role probabilities
+                                     #  worlds       = top-5 complete assignments
+
+        # Soft-likelihood judge sub-calls (likelihood: llm | memory | bayes).
+        judge_reasoning_effort: none # none | low | medium | high
+        judge_cot: false             # manual chain-of-thought: split each judged
+                                     # situation into reasoning + rating (2 calls
+                                     # per cache miss). Use INSTEAD of native
+                                     # thinking, i.e. with effort `none`.
+
+      # ── soft_symbolic: hard-constraint symbolic Prince + soft LLM rescoring ──
+      soft_likelihood:
+        top_k: 3   # rescore only the top_k uniform-IG candidates with the soft IG
+        # Codebook overrides; omit for the defaults shown.
+        answer_weight:     {LIKELY: 4, NEUTRAL: 2, UNLIKELY: 1}   # relative, normalised
+        confidence_shrink: {LOW: 0.3, MEDIUM: 0.6, HIGH: 0.9}     # lambda in [0, 1]
+
+      # ── grail: GRAIL baseline (max-product BP + belief-greedy passive policy) ──
+      grail:
+        use_llm_prior: true          # inject the LLM "vibes" pseudo-prior before
+                                     # each BP inference (needs Ollama)
+        vibes_reasoning_effort: none # thinking for the vibes sub-call only
+        algorithm: max               # max (max-product, GRAIL's choice) | sum
+        # factor_function: what encodes "observations → roles"
+        #  uniform    = uniform-derived answer likelihood (no artefact needed)
+        #  likelihood = learned P(answer | roles); .pkl from build_likelihood_codebook.py
+        #  posterior  = learned P(role | history); .pt from posterior_factor.py
+        factor_function: uniform
+        factor_function_path: null   # required unless factor_function: uniform
+
+      # ── emo: EMO baseline (atomic opponent models + central validator) ──
+      # Every step is an LLM call; ~70–80 calls per 7-player game at S = G = 2.
+      emo:
+        self_refine_steps: 2          # S: self-feedback/refine iterations
+        global_refine_steps: 2        # G: validator iterations (0 = SMO-like ablation)
+        model_reasoning_effort: none  # thinking for opponent-model/validator sub-calls
+        use_reasoning_history: true   # EMO's OWN reasoning history, independent of
+                                      # llm.reasoning_history used by LLM opponents
+
+      # ── memory: cross-game opponent memory ──
+      # One store per run. After each completed game every opponent's true role
+      # and ground-truth-annotated answers are recorded; later games consume them.
+      # Requires shuffle_opponents: false, since memory is keyed by seat.
+      # Written to memory.json in the run directory.
+      memory:
+        enabled: false
+        window: 0        # render only each opponent's last K games (0 = all)
+        load_path: null  # warm start from a previous run's memory.json
+        report: raw      # raw | profile | both — what the prompts show per opponent
+        profile:
+          enabled: false          # rewrite an LLM-written profile after every game
+          reasoning_effort: none  # thinking for the profile-update sub-calls
+
+    # Randomise which opponent entry lands in which seat, per game (reproducible
+    # from the game seed). A no-op for homogeneous line-ups. Must be false when
+    # cross-game memory is enabled.
+    shuffle_opponents: false
+
+    # Opponent seats. Types: random | human | llm
+    #   | symbolic  (2nd-order ToM; best-responds to a uniform order-1 Prince)
+    #   | symbolic1 (1st-order ToM; best-responds to an order-0 logical Prince)
+    # The last entry repeats to fill any remaining seats, so a single entry means
+    # a homogeneous table.
+    players:
+      - type: symbolic
+
+  # ─── LLM ─────────────────────────────────────────────────────────────────
+  # Read only when something in the run actually calls a model.
+  llm:
+    model: "qwen3.5-9b-ctx12288:latest"
+    base_url: "http://localhost:11434/v1"
+    api_key: "ollama"
+    max_retries: 3       # retries on a response that fails to parse
+    temperature: 0.5
+    top_p: 0.9
+    max_tokens: 6144     # output cap (Ollama's num_predict)
+    reasoning_effort: high  # none = off; low | medium | high = on
+                            # (qwen3.5 treats every non-none value as simply "on")
+    reasoning_history:
+      enabled: true      # feed an agent's past thinking back into later prompts
+    # num_ctx and repeat_penalty CANNOT be set here: Ollama's OpenAI-compatible
+    # /v1 endpoint silently drops them as request options. Bake them into a model
+    # variant with Modelfile.template and point `model` at it; `ollama ps` shows
+    # the context actually in force. An over-long prompt is truncated with no
+    # error, so verify rather than assume.
+
+  # ─── Logging ─────────────────────────────────────────────────────────────
+  logging:
+    enabled: true
+    output_dir: "results/example_grid"
+    # Each combination gets its own <timestamp>_<model>_<Np>/ directory holding
+    # config.yaml (the config actually executed), summary.csv and game_*.json.
+    # The batch itself writes batch_results_<ts>.csv and batch_summary_<ts>.yaml
+    # at the end of the run.
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+#  Sweep
+# ═══════════════════════════════════════════════════════════════════════════
+#
+# Keys are dotted paths into `base`; missing intermediate keys are created.
+# Combination folder names come from the last path segment and the value —
+# except for `type` and `enabled`, which use their parent's name — with
+# booleans rendered Y/N, a homogeneous player list rendered as its type, and a
+# mixed list run-length encoded (e.g. random2-llm2-symbolic2).
+
+sweep:
+
+  # Factor 1: the opponent model used for the belief update. Each value is a
+  # plain scalar substituted at that path.
+  agents.prince.ablation.likelihood:
+    - uniform     # 1st-order: opponents assumed to answer at random
+    - strategic   # 2nd-order: the model matching `symbolic1` opponents
+
+  # Factor 2: opponent line-up. Values are whole LISTS, and the list is
+  # substituted wholesale — the "last entry repeats" rule then fills the seats.
+  agents.players:
+    - [{type: random}]
+    - [{type: symbolic}]
+
+
+# ─── Further sweep patterns ────────────────────────────────────────────────
+# Uncomment to use. Each one multiplies the combination count.
+#
+#   # A mixed table: give every seat explicitly. With shuffle_opponents: true
+#   # the composition stays fixed while the seat assignment is re-randomised.
+#   agents.players:
+#     - [{type: random}, {type: random}, {type: llm},
+#        {type: llm}, {type: symbolic}, {type: symbolic}]
+#
+#   # Numeric sweeps: log scale for tom_beta (it saturates), linear for tom_eps.
+#   agents.prince.ablation.tom_beta: [0, 1, 4, 16, 64, 256]
+#   agents.prince.ablation.tom_eps:  [0.02, 0.05, 0.1, 0.2, 0.35, 0.5]
+#
+#   # Booleans render as Y/N in the folder name.
+#   agents.prince.ablation.give_belief_state: [true, false]
+#
+#   # Comparing agents: sweep the Prince type itself. Each type reads its own
+#   # block from `base`, so all of them must be present and valid.
+#   agents.prince.type: [ablation, grail, emo]
+#
+#   # Replication rather than a factor: repeat the same condition on independent
+#   # seed series. analyze.py --learning-curve averages over the series it finds.
+#   game.seed: [910001, 911001, 912001, 913001, 914001]

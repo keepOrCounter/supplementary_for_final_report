@@ -1,0 +1,65 @@
+agents:
+  players:
+  - type: symbolic1
+  - type: symbolic1
+  - type: symbolic1
+  - type: symbolic1
+  - type: symbolic1
+  - type: symbolic1
+  prince:
+    ablation:
+      bayes_adapt: mixture
+      belief_mode: distribution
+      give_belief_state: true
+      give_history: true
+      give_memory: true
+      guess_strategy: map
+      judge_cot: false
+      judge_reasoning_effort: high
+      likelihood: llm
+      question_strategy: ig
+      tom_eps: 0.2
+      tom_smoothing: eps_greedy
+    emo:
+      global_refine_steps: 2
+      model_reasoning_effort: none
+      self_refine_steps: 2
+      use_reasoning_history: true
+    grail:
+      algorithm: max
+      factor_function: uniform
+      factor_function_path: null
+      use_llm_prior: true
+      vibes_reasoning_effort: none
+    memory:
+      enabled: false
+      load_path: null
+      profile:
+        enabled: false
+        reasoning_effort: none
+      report: raw
+      window: 0
+    soft_likelihood:
+      top_k: 99
+    type: ablation
+  shuffle_opponents: false
+game:
+  num_games: 100
+  num_players: 7
+  print_out: true
+  seed: 65685
+  use_center_card: true
+llm:
+  api_key: ollama
+  base_url: http://localhost:11434/v1
+  max_retries: 3
+  max_tokens: 6144
+  model: qwen3.5-9b-ctx12288:latest
+  reasoning_effort: high
+  reasoning_history:
+    enabled: true
+  temperature: 0.5
+  top_p: 0.9
+logging:
+  enabled: true
+  output_dir: results/grid_IG-LLM_1st

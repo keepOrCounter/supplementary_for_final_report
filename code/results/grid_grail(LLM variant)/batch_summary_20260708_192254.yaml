@@ -1,0 +1,64 @@
+best: &id001
+  combination: players=random
+  completed: 100
+  duration_seconds: 1504.5
+  failed: 0
+  lk_cache_hit_rate: 0.0
+  lk_defaulted_slots: 0
+  lk_judge_calls: 0
+  lk_queries: 0
+  llm_calls: 700
+  llm_retries: 0
+  llm_total_tokens: 945749
+  num_games: 100
+  other_wins: 13
+  params:
+    agents.players:
+    - type: random
+  prince_accuracy: 0.82
+  princess_wins: 82
+  queen_wins: 5
+grid_config: experiment_grids/grid_grail.yaml
+results:
+- *id001
+- combination: players=symbolic
+  completed: 100
+  duration_seconds: 1535.3
+  failed: 0
+  lk_cache_hit_rate: 0.0
+  lk_defaulted_slots: 0
+  lk_judge_calls: 0
+  lk_queries: 0
+  llm_calls: 700
+  llm_retries: 0
+  llm_total_tokens: 945804
+  num_games: 100
+  other_wins: 51
+  params:
+    agents.players:
+    - type: symbolic
+  prince_accuracy: 0.24
+  princess_wins: 24
+  queen_wins: 25
+- combination: players=llm
+  completed: 100
+  duration_seconds: 4330.4
+  failed: 0
+  lk_cache_hit_rate: 0.0
+  lk_defaulted_slots: 0
+  lk_judge_calls: 0
+  lk_queries: 0
+  llm_calls: 1185
+  llm_retries: 15
+  llm_total_tokens: 1642941
+  num_games: 100
+  other_wins: 17
+  params:
+    agents.players:
+    - type: llm
+  prince_accuracy: 0.54
+  princess_wins: 54
+  queen_wins: 29
+total_combinations: 3
+total_duration_seconds: 7370.2
+total_games: 300

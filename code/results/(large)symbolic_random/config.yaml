@@ -1,0 +1,35 @@
+agents:
+  players:
+  - type: random
+  - type: random
+  - type: random
+  - type: random
+  - type: random
+  - type: random
+  prince:
+    type: symbolic
+game:
+  num_games: 100
+  num_players: 7
+  print_out: true
+  seed: 124
+  use_center_card: true
+llm:
+  api_key: ollama
+  base_url: http://localhost:11434/v1
+  keep_alive: 10m
+  max_retries: 3
+  model: qwen3.5:9b-q8_0
+  options:
+    num_ctx: 8192
+    num_predict: 4096
+    repeat_penalty: 1.2
+  reasoning_history:
+    enabled: true
+    max_turns: -1
+  temperature: 0.5
+  think: true
+  top_p: 0.9
+logging:
+  enabled: true
+  output_dir: results

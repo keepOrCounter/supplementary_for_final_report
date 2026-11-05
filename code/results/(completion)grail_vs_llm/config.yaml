@@ -1,0 +1,50 @@
+agents:
+  players:
+  - type: llm
+  - type: llm
+  - type: llm
+  - type: llm
+  - type: llm
+  - type: llm
+  prince:
+    ablation:
+      belief_mode: distribution
+      give_belief_state: true
+      give_history: true
+      guess_strategy: map
+      likelihood: uniform
+      question_strategy: llm
+    emo:
+      global_refine_steps: 2
+      model_reasoning_effort: none
+      self_refine_steps: 2
+    grail:
+      algorithm: max
+      factor_function: posterior
+      factor_function_path: agents/grail/learned_models/posterior.pt
+      use_llm_prior: true
+      vibes_reasoning_effort: none
+    soft_likelihood:
+      top_k: 3
+    type: grail
+  shuffle_opponents: false
+game:
+  num_games: 100
+  num_players: 7
+  print_out: true
+  seed: 65685
+  use_center_card: true
+llm:
+  api_key: ollama
+  base_url: http://localhost:11434/v1
+  max_retries: 3
+  max_tokens: 6144
+  model: qwen3.5-9b-ctx12288:latest
+  reasoning_effort: high
+  reasoning_history:
+    enabled: true
+  temperature: 0.5
+  top_p: 0.9
+logging:
+  enabled: true
+  output_dir: results

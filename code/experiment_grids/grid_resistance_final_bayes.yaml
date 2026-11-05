@@ -1,0 +1,89 @@
+# the formal run, with our Bayes type memory agent in the tested player id
+#
+#   python3 batch_runner_resistance.py experiment_grids/grid_resistance_final_bayes.yaml
+#
+# grid_resistance_final_llm.yaml with one change: player 0 reads belief_model:
+# bayes instead of llm. Every other line is the same, so the three arms (GRAIL,
+# llm, bayes) share their seeds, their seat rotation and the five other players,
+# and are compared game by game.
+#
+# belief_model: bayes keeps a belief over the deal and the type of every other
+# player: random, strategic3 (an order 3 model of the two strategic players) or
+# llm (the LLM judge). It learns the types across the 30 games of a trial and
+# writes memory.json into the run directory. strategic3 has to carry the
+# settings of the strategic players; the runner refuses the run if they differ.
+# The judge settings are the llm arm's.
+
+base:
+  game:
+    num_players: 6
+    num_games: 30
+    seed: 910001
+    print_out: false
+    enforce_resistance_must_pass: false
+    reveal_fail_count: false
+  agents:
+    seats:
+      - type: ablation
+        faction: resistance
+        propose_strategy: eu
+        team_vote_strategy: eu
+        mission_strategy: eu
+        belief_model: bayes
+        info_weight: 0.5
+        adaptive_info_weight: true
+        judge_cot: true
+        judge_reasoning_effort: none
+        strategic3: # the settings of the two strategic players; the runner checks they match
+          info_weight: 0.5
+          adaptive_info_weight: true
+          hide_weight: 0.25
+          spy_hide_budget: 0.0
+      - type: ablation
+        propose_strategy: llm
+        team_vote_strategy: llm
+        mission_strategy: llm
+        decision_cot: true
+        decision_reasoning_effort: none
+        resistance_plays_success: true
+      - type: ablation
+        propose_strategy: eu
+        team_vote_strategy: eu
+        mission_strategy: eu
+        belief_model: strategic
+        info_weight: 0.5
+        adaptive_info_weight: true
+        hide_weight: 0.25
+        spy_hide_budget: 0.0
+      - type: ablation
+        propose_strategy: eu
+        team_vote_strategy: eu
+        mission_strategy: eu
+        belief_model: strategic
+        info_weight: 0.5
+        adaptive_info_weight: true
+        hide_weight: 0.25
+        spy_hide_budget: 0.0
+      - type: random
+        plays_success: true
+      - type: random
+        plays_success: true
+    rotate_seats: &id001
+    - 910001
+    - 911001
+    - 912001
+    - 913001
+    - 914001
+    - 915001
+  llm:
+    model: qwen3.5-9b-ctx12288:latest
+    base_url: http://localhost:11434/v1
+    api_key: ollama
+    max_retries: 3
+    temperature: 0.5
+    top_p: 0.9
+    max_tokens: 6144
+  logging:
+    output_dir: results/final_bayes_mixed
+sweep:
+  game.seed: *id001

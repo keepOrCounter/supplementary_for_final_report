@@ -1,0 +1,32 @@
+agents:
+  players:
+  - type: symbolic
+  prince:
+    ablation:
+      belief_mode: distribution
+      give_belief_state: true
+      give_history: true
+      guess_strategy: map
+      likelihood: uniform
+      question_strategy: ig
+    type: ablation
+game:
+  num_games: 100
+  num_players: 7
+  print_out: false
+  seed: 65685
+  use_center_card: true
+llm:
+  api_key: ollama
+  base_url: http://localhost:11434/v1
+  max_retries: 3
+  max_tokens: 6144
+  model: qwen3.5-9b-ctx12288:latest
+  reasoning_effort: high
+  reasoning_history:
+    enabled: true
+  temperature: 0.5
+  top_p: 0.9
+logging:
+  enabled: true
+  output_dir: results/grid_main

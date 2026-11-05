@@ -1,0 +1,46 @@
+agents:
+  players:
+  - type: random
+  - type: llm
+  - type: random
+  - type: llm
+  - type: symbolic
+  - type: symbolic
+  prince:
+    ablation:
+      bayes_adapt: joint
+      belief_mode: distribution
+      give_belief_state: true
+      give_history: true
+      guess_strategy: map
+      judge_cot: true
+      judge_reasoning_effort: none
+      likelihood: bayes
+      question_strategy: ig
+      tom_eps: 0.2
+      tom_smoothing: eps_greedy
+    memory:
+      enabled: true
+      window: 50
+    type: ablation
+  shuffle_opponents: false
+game:
+  num_games: 30
+  num_players: 7
+  print_out: true
+  seed: 911001
+  use_center_card: true
+llm:
+  api_key: ollama
+  base_url: http://localhost:11434/v1
+  max_retries: 3
+  max_tokens: 6144
+  model: qwen3.5-9b-ctx12288:latest
+  reasoning_effort: high
+  reasoning_history:
+    enabled: true
+  temperature: 0.5
+  top_p: 0.9
+logging:
+  enabled: true
+  output_dir: results/grid_memory_bayes_joint

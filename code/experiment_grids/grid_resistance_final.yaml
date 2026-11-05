@@ -1,0 +1,105 @@
+# the formal run of the GRAIL arm
+#
+#   python3 batch_runner_resistance.py experiment_grids/grid_resistance_final.yaml
+#
+# Six trials of thirty games. The two other arms change seat 0 and nothing
+# else, so the three runs are compared game by game.
+#
+# ONE TRIAL, ONE SEAT, ALL ITS GAMES. A cross-game memory is keyed by player id
+# and learns across the games INSIDE a trial, so the seat holds still for all of
+# them. The seat turns BETWEEN trials: agents.rotate_seats lists the trial seeds
+# in order and a trial's offset is its place in that list, so the single sweep
+# axis game.seed moves the trial and the seats together. Six trials, six seats,
+# each tested once.
+#
+# The seat turns at all because an agent's play can depend on the seat number it
+# holds and GRAIL's does: rotating one record through every seat and rotating
+# the answer back moves its belief by up to 0.91, where a seat symmetric model
+# would return the same six numbers. One fixed seat measures that agent AT that
+# seat.
+#
+# THE SEEDS ARE SPACED 1000 APART ON PURPOSE. run_experiment plays game i on
+# seed + 1 + i, so trials whose seeds differ by less than num_games would share
+# games. No two trials here share one.
+#
+# WHAT THE PIN COSTS. In any single game the
+# pinned seat never holds a spy card, and every belief at the table carries a
+# prior that says it might: from a resistance seat there are C(5,2)=10 worlds
+# and 4 of them put that seat in the spy pair, so 40% of the prior sits on
+# worlds that cannot happen. Turning the seat between trials changes which seat
+# that is, not that it happens. It is identical in both arms of the comparison,
+# so it does not tilt one against the other, but the absolute numbers are not
+# comparable to a uniformly dealt run such as the ladder table.
+#
+# GRAIL has no spy policy at all -- check_rules refuses it a spy seat -- so
+# faction: resistance is forced for it, and a seat without a faction is checked
+# against BOTH, since the deal decides which side it takes.
+#
+# THE MIX
+#
+#   the tested agent, pinned to the resistance
+#   one LLM. One and not two: it is the only seat that costs wall clock, about
+#     80 calls a game with decision_cot on.
+#   two order 2 beliefs, the ToM opponents
+#   two random
+
+base:
+  game:
+    num_players: 6
+    num_games: 30
+    seed: 910001
+    print_out: false
+    enforce_resistance_must_pass: false
+    reveal_fail_count: false
+  agents:
+    seats:
+      - type: grail
+        faction: resistance
+      - type: ablation
+        propose_strategy: llm
+        team_vote_strategy: llm
+        mission_strategy: llm
+        decision_cot: true
+        decision_reasoning_effort: none
+        resistance_plays_success: true
+      - type: ablation
+        propose_strategy: eu
+        team_vote_strategy: eu
+        mission_strategy: eu
+        belief_model: strategic
+        info_weight: 0.5
+        adaptive_info_weight: true
+        hide_weight: 0.25
+        spy_hide_budget: 0.0
+      - type: ablation
+        propose_strategy: eu
+        team_vote_strategy: eu
+        mission_strategy: eu
+        belief_model: strategic
+        info_weight: 0.5
+        adaptive_info_weight: true
+        hide_weight: 0.25
+        spy_hide_budget: 0.0
+      - type: random
+        plays_success: true
+      - type: random
+        plays_success: true
+    rotate_seats: &id001
+    - 910001
+    - 911001
+    - 912001
+    - 913001
+    - 914001
+    - 915001
+  llm:
+    model: qwen3.5-9b-ctx12288:latest
+    base_url: http://localhost:11434/v1
+    api_key: ollama
+    max_retries: 3
+    temperature: 0.5
+    top_p: 0.9
+    max_tokens: 6144
+  logging:
+    output_dir: results/final_grail_mixed
+sweep:
+  game.seed: *id001

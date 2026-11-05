@@ -1,0 +1,30 @@
+agents:
+  players:
+  - type: random
+  prince:
+    grail:
+      algorithm: max
+      factor_function: posterior
+      factor_function_path: grail/learned_models/posterior.pt
+      use_llm_prior: true
+    type: grail
+game:
+  num_games: 100
+  num_players: 7
+  print_out: true
+  seed: 65685
+  use_center_card: true
+llm:
+  api_key: ollama
+  base_url: http://localhost:11434/v1
+  max_retries: 3
+  max_tokens: 6144
+  model: qwen3.5-9b-ctx12288:latest
+  reasoning_effort: none
+  reasoning_history:
+    enabled: false
+  temperature: 0.5
+  top_p: 0.9
+logging:
+  enabled: true
+  output_dir: results/grid_grail
